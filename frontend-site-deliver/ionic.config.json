@@ -1,0 +1,8 @@
+{
+  "name": "SiteDeliver",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular",
+  "id": "9810cb07"
+}

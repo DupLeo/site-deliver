@@ -1,0 +1,18 @@
+<ion-content [fullscreen]="true">
+  <ion-header>
+    <ion-toolbar>
+      <ion-segment value="login">
+        <ion-segment-button value="login" (click)="setLogin()">
+          <ion-label>Login</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="register" (click)="setRegister()">
+          <ion-label>Register</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+    </ion-toolbar>
+  </ion-header>
+
+  <app-login *ngIf="active === 'login'"></app-login>
+  <app-register *ngIf="active === 'register'"></app-register>
+
+</ion-content>

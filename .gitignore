@@ -1,0 +1,40 @@
+# Fichiers et dossiers Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.env
+
+# Dossiers générés par npm
+package-lock.json
+yarn.lock
+
+# Fichiers logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Fichiers temporaires système
+.DS_Store
+Thumbs.db
+
+# Angular
+# Repertoire des builds Angular
+dist/
+out-tsc/
+
+# Cache Angular
+.angular/
+
+# IDE / Outils de développement
+.idea/
+.vscode/
+*.sublime-workspace
+
+# Angular - Fichiers de configuration des environnements
+src/environments/environment*.ts
+
+# Autres fichiers générés
+coverage/

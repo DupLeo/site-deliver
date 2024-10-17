@@ -1,42 +1,26 @@
-const { Sequelize } = require('sequelize');
-require('dotenv').config();
 const express = require('express');
+const sequelize = require('./config/db.config');  // Importe la connexion Sequelize
+var userRoutes = require('./route/routes'); // Assure-toi que le chemin est correct
+
 const app = express();
 const port = 3000;
 
+// Middleware pour parser les JSON
+app.use(express.json());
+app.use('/user', userRoutes); 
 
+// Route basique pour vérifier si le serveur fonctionne
 app.get('/', (req, res) => {
-    res.send('Hello World!');
+  res.send('API Site Deliver est opérationnelle !');
 });
 
+// Démarre le serveur
 app.listen(port, async () => {
-    console.log(`Server is running on port ${port}`);
-    await retryConnection(5);
+  try {
+    // Synchronise les modèles avec la base de données
+    await sequelize.sync();
+    console.log(`Serveur Express démarré sur http://localhost:${port}`);
+  } catch (error) {
+    console.error('Erreur lors de la synchronisation des modèles avec la base de données:', error);
+  }
 });
-
-const sequelize = new Sequelize(
-    process.env.DB_NAME,
-    process.env.DB_USER,
-    process.env.DB_PASSWORD,
-    {
-        host: process.env.DB_HOST,
-        dialect: 'mysql',
-        port: 3306
-    }
-);
-
-const retryConnection = async (retries) => {
-    while (retries > 0) {
-      try {
-        await sequelize.authenticate();
-        console.log('Connection has been established successfully.');
-        return;
-      } catch (error) {
-        console.error('Unable to connect to the database, retrying...', error);
-        retries -= 1;
-        await new Promise(res => setTimeout(res, 3000)); // Attendre 5 secondes avant de réessayer
-      }
-    }
-    console.error('All retries failed.');
-  };
-  

@@ -1,8 +1,8 @@
 var express = require('express');
-var userController = require('../src/user/userController'); // Assurez-vous que le chemin est correct
+var userController = require('../src/user/userController'); // Chemin correct vers userController
 const router = express.Router();
 
-router.route('/user/login').post(userController.loginUserControllerFn);
-router.route('/user/create').post(userController.createUserControllerFn);
+router.route('/login').post(userController.loginUserControllerFn);
+router.route('/create').post(userController.createUserControllerFn);
 
 module.exports = router;

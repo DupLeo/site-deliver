@@ -1,38 +1,17 @@
-version: '3.8'
-
 services:
   mysql:
-    image: mysql:latest  
-    restart: always
-    environment: 
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-      MYSQL_USER: ${MYSQL_USER}
-      MYSQL_PASSWORD: ${MYSQL_PASSWORD}  
-      MYSQL_DATABASE: ${MYSQL_DATABASE} 
-    ports:
-      - "3306:3306"                          
-    volumes:
-      - mysql_data:/var/lib/mysql 
-
-  frontend:
-    build:
-      context: ./frontend-site-deliver  
-      dockerfile: Dockerfile.frontend
-    volumes:
-      - ./src:/app/src  # Volume pour synchroniser les fichiers de développement
-    ports:
-      - "8080:80"  # Port pour accéder à l'app frontend
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: 1234
+      MYSQL_DATABASE: site-deliver-bdd
+  backend-express:
+    image: backend-express
+    environment:
+      DB_HOST: mysql
+      DB_NAME: site-deliver-bdd
+      DB_USER: root
+      DB_PASSWORD: 1234
     depends_on:
-      - backend 
-
-  backend:
-    build:
-      context: ./backend-site-deliver 
-      dockerfile: Dockerfile.backend
+      - mysql
     ports:
-      - "3000:3000"  
-    depends_on:
-      - mysql          
-
-volumes:
-  mysql_data:
+      - "3000:3000"

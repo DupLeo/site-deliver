@@ -1,0 +1,20 @@
+ion-card{
+  box-shadow:none;
+}
+
+
+ion-card-title{
+  font: var(--ion-font-family-inter);
+  font-weight: 600;
+  font-size: var(--ion-font-size-xl);
+}
+
+p {
+
+    font: var(--ion-font-family-inter);
+    font-weight: 400 !important;
+    color: var(--ion-text-color) !important;
+    font-size: var(--ion-font-size-s);
+
+}
+

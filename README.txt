@@ -1,19 +1,17 @@
-=============
-Construire l'image du frontend (Angular) :
-Aller dans le dossier frontend
-Build projet ionic angular
-docker build -t frontend-angular -f Dockerfile.frontend .
+============
+Lancer contener mysql :
+docker run --name mysql   -e MYSQL_ROOT_PASSWORD=1234   -e MYSQL_DATABASE=site-deliver-bdd   -p 3306:3306   -d mysql:latest
 
 ==============
 Construire l'image du backend (Express) :
 Aller dans le dossier backend
 docker build -t backend-express -f Dockerfile.backend .
 
-==============
-Creer les conteneurs avec Docker Compose :
-docker-compose up --build
-docker start ID_CONTAINER_MYSQL
-docker start ID_CONTAINER_BACKEND
+=============
+Construire l'image du frontend (Angular) :
+Aller dans le dossier frontend
+Build projet ionic angular
+docker build -t frontend-angular -f Dockerfile.frontend .
 
 ==============
 Démarrer server : 

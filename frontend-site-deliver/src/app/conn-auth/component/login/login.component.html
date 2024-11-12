@@ -1,20 +1,17 @@
 <ion-card>
   <ion-card-header>
-    <ion-card-title>Login</ion-card-title>
-    <ion-card-subtitle>Re-bonjour !</ion-card-subtitle>
+    <ion-card-title>Bonjour !</ion-card-title>
+    <ion-card-subtitle>Connectez-vous à votre compte.</ion-card-subtitle>
   </ion-card-header>
 
   <ion-card-content>
     <ion-list>
-
-      <ion-item>
-        <ion-input type="email" [(ngModel)]="email" label="email" placeholder="xx@xx.com"></ion-input>
-      </ion-item>
-
-      <ion-item>
-        <ion-input type="password" [(ngModel)]="password" label="password" placeholder="password" ></ion-input>
-      </ion-item>
-
+        <div slot="label"><p  class="input_text">Email</p>
+          <ion-input label-placement="floating" fill="outline" type="email" [(ngModel)]="email" label="email" placeholder="xx@xx.com"></ion-input>
+        </div>
+      <div slot="label"><p class="input_text" >Password</p>
+        <ion-input label-placement="floating" fill="outline" type="password" [(ngModel)]="password" label="password" placeholder="password" ></ion-input>
+      </div>
       <ion-button expand="block" (click)="login()">Confirm</ion-button>
 
     </ion-list>

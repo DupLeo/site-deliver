@@ -1,9 +1,13 @@
 const express = require('express');
 const sequelize = require('./config/db.config');  // Importe la connexion Sequelize
 var userRoutes = require('./route/routes'); // Assure-toi que le chemin est correct
+const cors = require('cors');  // Importe le package cors
 
 const app = express();
 const port = 3000;
+
+// Activer CORS pour toutes les origines (ou personnaliser selon ton besoin)
+app.use(cors()); // CORS est appliqué à toutes les routes
 
 // Middleware pour parser les JSON
 app.use(express.json());

@@ -11,7 +11,6 @@ export class Tab1Page implements OnInit {
   constructor(private router: Router) {}
 
   ngOnInit() {
-    this.router.navigateByUrl('/conn-auth');
   }
 
 }

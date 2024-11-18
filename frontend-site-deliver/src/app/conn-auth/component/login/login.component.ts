@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {Router} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
+import {UserService} from "../../../services/api/user.service";
 
 @Component({
   selector: 'app-login',
@@ -12,29 +13,24 @@ export class LoginComponent {
   email: string = '';
   password: string = '';
 
-  constructor(private router: Router,private http: HttpClient) {}
+  constructor(private userService: UserService, private router: Router) {}
 
   login() {
-    console.log(this.email);
-    console.log(this.password);
-    let bodyData = {
-      email: this.email,
-      password: this.password,
-    };
-    this.http.post("http://localhost:3000/user/login", bodyData).subscribe(  (resultData: any) => {
-      console.log(resultData);
-      if (resultData.status)
-      {
-
-        //this.router.navigateByUrl('');
-
+    this.userService.login(this.email, this.password).subscribe(
+      (resultData: any) => {
+        if (resultData.status && resultData.token) {
+          this.userService.saveSession(resultData.token);
+          this.router.navigateByUrl('/'); // Redirige vers la page principale
+        } else {
+          alert('Incorrect Email or Password');
+        }
+      },
+      (error) => {
+        console.error('Error during login:', error);
+        alert('An error occurred during login');
       }
-      else
-      {
-        alert("Incorrect Email or Password");
-        console.log("Errror login");
-      }
-    });
+    );
   }
+
 
 }

@@ -6,11 +6,11 @@ const routes: Routes = [
   {
     path: '',
     component: CataloguePage,
-  },  {
-    path: 'article-info',
+  },
+  {
+    path: 'article-info/:id',
     loadChildren: () => import('./pages/article-info/article-info.module').then( m => m.ArticleInfoPageModule)
   }
-
 ];
 
 @NgModule({

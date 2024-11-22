@@ -12,7 +12,7 @@
   <ion-card>
     <ion-card-content>
       <ion-list *ngFor="let item of items">
-        <app-article [article]="item" (click)="goToInfo()"></app-article>
+        <app-article [article]="item" [routerLink]="['/catalogue/', 'article-info', item.id]"></app-article>
       </ion-list>
     </ion-card-content>
   </ion-card>

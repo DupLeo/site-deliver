@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {Router} from "@angular/router";
+import {Component, Input, OnInit} from '@angular/core';
+import {Router, ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-article-info',
@@ -7,19 +7,26 @@ import {Router} from "@angular/router";
   styleUrls: ['./article-info.page.scss'],
 })
 export class ArticleInfoPage implements OnInit {
-  article =  {
-    nom: "Chaise de bureau",
-    price: "70",
-    desc: "Chaise de bureau très confortable, ergnonomique. Permet le repos du dos durant les séssions de travail et de code intance."
-  }
+  idItem : any;
+  item : any;
 
-  constructor(private router: Router) { }
+  constructor(private route : ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
+    this.route.paramMap.subscribe(params => {
+      this.idItem = params.get('id');
+    });
+    this.getItem();
+    console.log(this.idItem);
   }
 
   back(){
     this.router.navigateByUrl('/');
+  }
+
+  getItem(){
+    // recherche avec l'id en utilisant AXIOS vers la BDD
+    this.item =  {id: 1, nom:"Table de bureau",price:"20", desc:"petite table de bureau."};
   }
 
 }

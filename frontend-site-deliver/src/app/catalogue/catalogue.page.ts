@@ -8,17 +8,12 @@ import {Router} from "@angular/router";
 })
 export class CataloguePage implements OnInit {
   // liste des items
-  items = [{nom:"Table de bureau",price:"20", desc:"petite table de bureau."},
-    {nom:"Lampe de chevet",price:"16", desc:"Lampe jaune trop cool."},
-    {nom:"Chaise Gamer",price:"120", desc:"Chaise de bureau [Gamer] bonne qualité."}]
+  items = [{id: 1, nom:"Table de bureau",price:"20", desc:"petite table de bureau."},
+    {id: 2, nom:"Lampe de chevet",price:"16", desc:"Lampe jaune trop cool."},
+    {id: 3, nom:"Chaise Gamer",price:"120", desc:"Chaise de bureau [Gamer] bonne qualité."}]
 
   constructor(private router: Router) {}
 
   ngOnInit() {
-    //this.router.navigateByUrl('/conn-auth');
-  }
-
-  goToInfo(){
-    this.router.navigateByUrl('/catalogue/article-info');
   }
 }

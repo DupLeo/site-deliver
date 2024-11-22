@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { ArticleInfoPageRoutingModule } from './article-info-routing.module';
 
 import { ArticleInfoPage } from './article-info.page';
+import {ButtonValidateComponent} from "../../../componentGlobal/button-validate/button-validate.component";
 
 @NgModule({
   imports: [
@@ -15,6 +16,6 @@ import { ArticleInfoPage } from './article-info.page';
     IonicModule,
     ArticleInfoPageRoutingModule
   ],
-  declarations: [ArticleInfoPage]
+  declarations: [ArticleInfoPage, ButtonValidateComponent]
 })
 export class ArticleInfoPageModule {}

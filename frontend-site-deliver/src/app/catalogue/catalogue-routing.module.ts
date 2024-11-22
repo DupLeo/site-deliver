@@ -10,7 +10,12 @@ const routes: Routes = [
   {
     path: 'article-info/:id',
     loadChildren: () => import('./pages/article-info/article-info.module').then( m => m.ArticleInfoPageModule)
+  },
+  {
+    path: 'commander-article/:id',
+    loadChildren: () => import('./pages/commander-article/commander-article.module').then( m => m.CommanderArticlePageModule)
   }
+
 ];
 
 @NgModule({

@@ -1,0 +1,55 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>commander-article</ion-title>
+  </ion-toolbar>
+  <!-- Bouton retour à l'article a été sélectionné -->
+  <ion-item [button]="true" [routerLink]="['/catalogue/', 'article-info', this.idArticle]" (click)="reset()">
+    <ion-icon name="arrow-back-outline"></ion-icon>Back
+  </ion-item>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-item button *ngIf=" this.etape > 1 && this.etape < 4" (click)="retour()"><ion-icon name="arrow-back-outline"></ion-icon>Revenir</ion-item>
+
+  <ion-content *ngIf=" this.etape == 1">
+    <!-- Formulaire pour ajouter un client -->
+    <h2>Informations clients</h2>
+    <ion-item>
+      <ion-input label="Nom client" labelPlacement="floating" placeholder="Nom prénom"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input
+        type="email"
+        fill="solid"
+        label="Email"
+        labelPlacement="floating"
+        errorText="Invalide Mail"
+        ngModel
+        email
+      ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input label="Numéro de Télephone" labelPlacement="floating" type="tel" placeholder="888-888-8888"></ion-input>
+    </ion-item>
+
+
+  </ion-content>
+
+  <ion-content *ngIf=" this.etape == 2">
+    <!-- Ajouter une adresse de livraison et une destination-->
+    <p>Etape 2</p>
+  </ion-content>
+
+  <ion-content *ngIf=" this.etape == 3">
+    <!-- -->
+    <p>Etape 3</p>
+  </ion-content>
+
+  <ion-content *ngIf=" this.etape == 4">
+    <!-- Infos de la commande avec confirmation -->
+    <p>Recap de la commande</p>
+  </ion-content>
+
+  <ion-item button *ngIf="this.etape < 4" (click)="suivant()">Valider</ion-item>
+
+</ion-content>

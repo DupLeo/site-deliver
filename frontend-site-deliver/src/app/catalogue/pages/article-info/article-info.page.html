@@ -15,4 +15,5 @@
   <ion-card-subtitle>Prix : {{ item.price}}</ion-card-subtitle>
   <h2>Description</h2>
   <p>{{ item.desc}}</p>
+  <app-button-validate [content]="'Commander !'" class="button-validate" [routerLink]="['/catalogue/', 'commander-article', item.id]"></app-button-validate>
 </ion-content>

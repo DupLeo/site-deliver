@@ -1,0 +1,18 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>article-info</ion-title>
+  </ion-toolbar>
+  <ion-item [button]="true" (click)="back()">
+    <ion-icon name="arrow-back-outline"></ion-icon>Back
+  </ion-item>
+</ion-header>
+
+<ion-content color="light" class="ion-padding">
+  <ion-thumbnail>
+    <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
+  </ion-thumbnail>
+  <ion-title>{{ article.nom }}</ion-title>
+  <ion-card-subtitle>Prix : {{ article.price}}</ion-card-subtitle>
+  <h2>Description</h2>
+  <p>{{ article.desc}}</p>
+</ion-content>

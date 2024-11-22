@@ -1,16 +1,21 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './guards/auth.guard';
+import {CataloguePageModule} from "./catalogue/catalogue.module";
 
 const routes: Routes = [
   {
     path: '',
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule),
-    canActivate: [AuthGuard], // Protège cette route
+    // canActivate: [AuthGuard], // Protège cette route
   },
   {
     path: 'conn-auth',
     loadChildren: () => import('./conn-auth/conn-auth.module').then(m => m.ConnAuthPageModule),
+  },
+  {
+    path: 'catalogue',
+    loadChildren: () => import('./catalogue/catalogue.module').then(m => m.CataloguePageModule)
   },
 ];
 

@@ -10,7 +10,7 @@ import { ConnAuthPageRoutingModule } from './conn-auth-routing.module';
 
 import { ConnAuthPage } from './conn-auth.page';
 import {RegisterComponent} from "./component/register/register.component";
-import {Tab1PageModule} from "../tab1/tab1.module";
+import {CataloguePageModule} from "../catalogue/catalogue.module";
 
 @NgModule({
   imports: [
@@ -19,7 +19,7 @@ import {Tab1PageModule} from "../tab1/tab1.module";
     IonicModule,
     ConnAuthPageRoutingModule,
     FormsModule,
-    Tab1PageModule,
+    CataloguePageModule,
     HttpClientModule
   ],
   declarations: [ConnAuthPage, RegisterComponent],

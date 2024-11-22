@@ -2,21 +2,22 @@ import { IonicModule } from '@ionic/angular';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Tab1Page } from './tab1.page';
+import {CataloguePage} from './catalogue.page';
 
-import { Tab1PageRoutingModule } from './tab1-routing.module';
+import { CatalogueRoutingModule } from './catalogue-routing.module';
 import {LoginComponent} from "../conn-auth/component/login/login.component";
+import {ArticleComponent} from "./component/article/article.component";
 
 @NgModule({
   imports: [
     IonicModule,
     CommonModule,
     FormsModule,
-    Tab1PageRoutingModule
+    CatalogueRoutingModule
   ],
   exports: [
     LoginComponent
   ],
-  declarations: [Tab1Page, LoginComponent]
+  declarations: [CataloguePage, LoginComponent, ArticleComponent]
 })
-export class Tab1PageModule {}
+export class CataloguePageModule {}

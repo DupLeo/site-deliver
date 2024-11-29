@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { CardGererCommandeComponent } from './card-gerer-commande.component';
+import { RowChipsFilterComponent } from './row-chips-filter.component';
 
-describe('CardGererCommandeComponent', () => {
-  let component: CardGererCommandeComponent;
-  let fixture: ComponentFixture<CardGererCommandeComponent>;
+describe('RowChipsFilterComponent', () => {
+  let component: RowChipsFilterComponent;
+  let fixture: ComponentFixture<RowChipsFilterComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ CardGererCommandeComponent ],
+      declarations: [ RowChipsFilterComponent ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(CardGererCommandeComponent);
+    fixture = TestBed.createComponent(RowChipsFilterComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

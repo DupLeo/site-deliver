@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { RowSuiviCommandeComponent } from './row-suivi-commande.component';
+import { ModalGererCommandeComponent } from './modal-gerer-commande.component';
 
-describe('RowSuiviCommandeComponent', () => {
-  let component: RowSuiviCommandeComponent;
-  let fixture: ComponentFixture<RowSuiviCommandeComponent>;
+describe('ModalGererCommandeComponent', () => {
+  let component: ModalGererCommandeComponent;
+  let fixture: ComponentFixture<ModalGererCommandeComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ RowSuiviCommandeComponent ],
+      declarations: [ ModalGererCommandeComponent ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(RowSuiviCommandeComponent);
+    fixture = TestBed.createComponent(ModalGererCommandeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

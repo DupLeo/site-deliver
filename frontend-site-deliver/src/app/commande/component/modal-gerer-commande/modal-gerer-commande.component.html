@@ -1,0 +1,194 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button default-href="#"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{commande.name}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-toolbar *ngIf="commande.status === 'valider'">
+    <ion-button fill="outline">Refuser</ion-button>
+    <ion-button fill="solid">Valider</ion-button>
+  </ion-toolbar>
+  <ion-toolbar *ngIf="commande.status === 'preparer'">
+    <ion-button fill="solid">Preparer</ion-button>
+  </ion-toolbar>
+  <ion-toolbar *ngIf="commande.status === 'receptionner'">
+    <ion-button fill="solid">Receptionner</ion-button>
+  </ion-toolbar>
+
+  <ion-segment [(ngModel)]="selectedSegment">
+    <ion-segment-button value="first">
+      <ion-label>Info produit</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="second">
+      <ion-label>Info commande</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="third">
+      <ion-label>Historique commande</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <!-- Segment pour les informations du produit -->
+  <div *ngIf="selectedSegment === 'first'">
+    <ion-card style="margin-bottom: 70px">
+      <ion-card-header>
+        <ion-card-title>Informations sur le produit</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-list lines="inset">
+          <!-- Identifiant du produit -->
+          <ion-item>
+            <ion-icon name="barcode-outline" slot="start"></ion-icon>
+            <ion-label>
+              <h3>Identifiant</h3>
+              <p>#123456789</p>
+            </ion-label>
+          </ion-item>
+
+          <!-- Poids du produit -->
+          <ion-item>
+            <ion-icon name="cube-outline" slot="start"></ion-icon>
+            <ion-label>
+              <h3>Poids</h3>
+              <p>2.5 kg</p>
+            </ion-label>
+          </ion-item>
+
+          <!-- Prix -->
+          <ion-item>
+            <ion-icon name="pricetag-outline" slot="start"></ion-icon>
+            <ion-label>
+              <h3>Prix</h3>
+              <p>49.99 €</p>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+        <!-- Bouton pour afficher la fiche produit -->
+        <div class="ion-text-end ion-margin-top">
+          <ion-button color="primary" fill="outline">Voir fiche produit</ion-button>
+        </div>
+      </ion-card-content>
+      <swiper-container>
+        <swiper-slide>
+          <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" style="width: 100%; height: auto;"/>
+        </swiper-slide>
+        <swiper-slide>
+          <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" style="width: 100%; height: auto;"/>
+        </swiper-slide>
+        <swiper-slide>
+          <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" style="width: 100%; height: auto;"/>
+        </swiper-slide>
+      </swiper-container>
+    </ion-card>
+  </div>
+
+  <!-- Segment pour les informations de la commande -->
+  <div *ngIf="selectedSegment === 'second'">
+    <ion-card style="margin-bottom: 70px">
+      <ion-card-header>
+        <ion-card-title>Informations sur la commande</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-list lines="inset">
+          <!-- Nom du destinataire -->
+          <ion-item>
+            <ion-icon name="person-outline" slot="start"></ion-icon>
+            <ion-label>
+              <h3>Destinataire</h3>
+              <p>Jean Dupont</p>
+            </ion-label>
+          </ion-item>
+
+          <!-- Adresse de livraison -->
+          <ion-item>
+            <ion-icon name="location-outline" slot="start"></ion-icon>
+            <ion-label>
+              <h3>Adresse</h3>
+              <p>123 Rue des Lilas, 75000 Paris</p>
+            </ion-label>
+          </ion-item>
+
+          <!-- Date d'expédition -->
+          <ion-item>
+            <ion-icon name="calendar-outline" slot="start"></ion-icon>
+            <ion-label>
+              <h3>Date d'expédition</h3>
+              <p>24 novembre 2024</p>
+            </ion-label>
+          </ion-item>
+
+          <!-- Société où le client a passé la commande -->
+          <ion-item>
+            <ion-icon name="business-outline" slot="start"></ion-icon>
+            <ion-label>
+              <h3>Entreprise</h3>
+              <p>Meubles et Déco SARL</p>
+            </ion-label>
+          </ion-item>
+
+          <!-- Statut de la livraison -->
+          <ion-item>
+            <ion-icon name="checkmark-circle-outline" slot="start" color="success"></ion-icon>
+            <ion-label>
+              <h3>Statut</h3>
+              <p>En cours de livraison</p>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <div *ngIf="selectedSegment === 'third'">
+    <!-- Historique des étapes de la commande -->
+    <ion-card style="margin-bottom: 70px">
+      <ion-card-header>
+        <ion-card-title>Historique des étapes</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-list lines="inset">
+          <!-- Étape 1 -->
+          <ion-item>
+            <ion-icon name="cart-outline" slot="start"></ion-icon>
+            <ion-label>
+              <h3>Commande passée</h3>
+              <p>15 novembre 2024</p>
+            </ion-label>
+          </ion-item>
+
+          <!-- Étape 2 -->
+          <ion-item>
+            <ion-icon name="cube-outline" slot="start"></ion-icon>
+            <ion-label>
+              <h3>En préparation</h3>
+              <p>17 novembre 2024</p>
+            </ion-label>
+          </ion-item>
+
+          <!-- Étape 3 -->
+          <ion-item>
+            <ion-icon name="airplane-outline" slot="start"></ion-icon>
+            <ion-label>
+              <h3>Expédiée</h3>
+              <p>20 novembre 2024</p>
+            </ion-label>
+          </ion-item>
+
+          <!-- Étape 4 -->
+          <ion-item>
+            <ion-icon name="checkmark-circle-outline" slot="start" color="success"></ion-icon>
+            <ion-label>
+              <h3>En cours de livraison</h3>
+              <p>24 novembre 2024</p>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>
+

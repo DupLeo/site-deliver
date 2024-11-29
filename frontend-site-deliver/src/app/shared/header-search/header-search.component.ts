@@ -7,9 +7,10 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class HeaderSearchComponent  implements OnInit {
 
-  constructor() { }
-
   @Input() title: string = 'Toolbar'; // valeur par défaut
+
+  constructor() {}
+
 
 
   ngOnInit() {}

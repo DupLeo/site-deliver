@@ -1,0 +1,20 @@
+<ion-card class="width:100%;" [button]="true" id="'open-modal-' + {{commande.name}}">
+  <ion-card-header>
+    <ion-card-title>{{ commande.name }}</ion-card-title>
+  </ion-card-header>
+
+  <ion-card-content>
+    <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" style="width: 100px; height: auto;"/>
+  </ion-card-content>
+
+  <ion-button *ngIf="commande.status === 'preparer'" fill="clear">À préparer</ion-button>
+  <ion-button *ngIf="commande.status === 'valider'" fill="clear">À valider</ion-button>
+  <ion-button *ngIf="commande.status === 'receptionner'" fill="clear">À réceptionner</ion-button>
+
+</ion-card>
+
+<ion-modal trigger="'open-modal-' + {{commande.name}}" [initialBreakpoint]="0.5" [breakpoints]="[0, 0.7, 1]">
+  <ng-template>
+    <app-modal-gerer-commande style="height: 100%" [commande]="commande" ></app-modal-gerer-commande>
+  </ng-template>
+</ion-modal>

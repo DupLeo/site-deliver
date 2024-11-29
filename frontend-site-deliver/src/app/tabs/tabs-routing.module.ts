@@ -33,7 +33,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: '/tabs/catalogue',
+    redirectTo: '/tabs/commande',
     pathMatch: 'full'
   }
 ];

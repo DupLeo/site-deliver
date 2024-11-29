@@ -1,0 +1,14 @@
+.custom-item {
+  --inner-padding-start: 0;
+  --inner-padding-end: 0;
+  --inner-margin: 0;
+  --padding-start: 0;
+  --padding-end: 0;
+  --border-width: 0;
+  --border-color: transparent;
+  --background: none;
+
+  ion-badge {
+    margin-left: 0.5em;
+  }
+}

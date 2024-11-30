@@ -11,10 +11,14 @@ export class RowChipsFilterComponent {
   selectedFilter: string = '';
 
   chips = [
-    { label: 'À valider', value: 'valider' },
-    { label: 'À préparer', value: 'preparer' },
-    { label: 'À charger', value: 'envoyer' },
-    { label: 'À réceptionner', value: 'receptionner' },
+    { label: 'Disponibilité', value: 'disponibilite' },
+    { label: 'Configuration', value: 'configuration' },
+    { label: 'Controle livraison', value: 'controle livraison' },
+    { label: 'Financement', value: 'financement' },
+    { label: 'Virement', value: 'virement' },
+    { label: 'Date livraison', value: 'date livraison' },
+    { label: 'Packaging', value: 'packaging' },
+
   ];
 
   filterCommande(status: string) {

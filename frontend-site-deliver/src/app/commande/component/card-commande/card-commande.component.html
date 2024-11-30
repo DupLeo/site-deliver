@@ -6,14 +6,18 @@
   <ion-card-content>
     <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" style="width: 100px; height: auto;"/>
   </ion-card-content>
+  <ion-button *ngIf="commande.status === 'configuration'" fill="clear">À configurer</ion-button>
+  <ion-button *ngIf="commande.status === 'disponibilite'" fill="clear">À valider</ion-button>
+  <ion-button *ngIf="commande.status === 'controle livraison'" fill="clear">À controller</ion-button>
+  <ion-button *ngIf="commande.status === 'financement'" fill="clear">À payer</ion-button>
+  <ion-button *ngIf="commande.status === 'virement'" fill="clear">À controller virement</ion-button>
+  <ion-button *ngIf="commande.status === 'date livraison'" fill="clear">Date à definir</ion-button>
+  <ion-button *ngIf="commande.status === 'packaging'" fill="clear">À packager</ion-button>
 
-  <ion-button *ngIf="commande.status === 'preparer'" fill="clear">À préparer</ion-button>
-  <ion-button *ngIf="commande.status === 'valider'" fill="clear">À valider</ion-button>
-  <ion-button *ngIf="commande.status === 'receptionner'" fill="clear">À réceptionner</ion-button>
 
 </ion-card>
 
-<ion-modal trigger="'open-modal-' + {{commande.name}}" [initialBreakpoint]="0.5" [breakpoints]="[0, 0.7, 1]">
+<ion-modal trigger="'open-modal-' + {{commande.name}}" [initialBreakpoint]="0.9" [breakpoints]="[0, 0.9, 1]">
   <ng-template>
     <app-modal-gerer-commande style="height: 100%" [commande]="commande" ></app-modal-gerer-commande>
   </ng-template>

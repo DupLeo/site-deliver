@@ -1,0 +1,23 @@
+<swiper-container>
+  <swiper-slide *ngIf="commande.status === 'disponibilite'">
+    <app-card-input-validation></app-card-input-validation>
+  </swiper-slide>
+  <swiper-slide *ngIf="commande.status === 'configuration'">
+    <app-card-input-preparation></app-card-input-preparation>
+  </swiper-slide>
+  <swiper-slide *ngIf="commande.status === 'controle livraison'">
+    <app-card-input-controle-livraison></app-card-input-controle-livraison>
+  </swiper-slide>
+  <swiper-slide *ngIf="commande.status === 'financement'">
+    <app-card-input-financement></app-card-input-financement>
+  </swiper-slide>
+  <swiper-slide *ngIf="commande.status === 'virement'">
+    <app-card-input-virement></app-card-input-virement>
+  </swiper-slide>
+  <swiper-slide *ngIf="commande.status === 'date livraison'">
+    <app-card-input-date-livraison></app-card-input-date-livraison>
+  </swiper-slide>
+  <swiper-slide *ngIf="commande.status === 'packaging'">
+    <app-card-input-packaging-pret></app-card-input-packaging-pret>
+  </swiper-slide>
+</swiper-container>

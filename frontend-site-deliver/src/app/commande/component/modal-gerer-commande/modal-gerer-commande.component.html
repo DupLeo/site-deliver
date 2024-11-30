@@ -1,24 +1,13 @@
 <ion-header>
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button default-href="#"></ion-back-button>
-    </ion-buttons>
     <ion-title>{{commande.name}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 
 <ion-content>
-  <ion-toolbar *ngIf="commande.status === 'valider'">
-    <ion-button fill="outline">Refuser</ion-button>
-    <ion-button fill="solid">Valider</ion-button>
-  </ion-toolbar>
-  <ion-toolbar *ngIf="commande.status === 'preparer'">
-    <ion-button fill="solid">Preparer</ion-button>
-  </ion-toolbar>
-  <ion-toolbar *ngIf="commande.status === 'receptionner'">
-    <ion-button fill="solid">Receptionner</ion-button>
-  </ion-toolbar>
+
+  <app-swipper-card-etape [commande]="commande"></app-swipper-card-etape>
 
   <ion-segment [(ngModel)]="selectedSegment">
     <ion-segment-button value="first">
@@ -67,10 +56,10 @@
             </ion-label>
           </ion-item>
         </ion-list>
-        <!-- Bouton pour afficher la fiche produit -->
-        <div class="ion-text-end ion-margin-top">
-          <ion-button color="primary" fill="outline">Voir fiche produit</ion-button>
-        </div>
+          <ion-button slot="end" color="primary" fill="outline">
+            <ion-icon name="eye-outline" slot="start"></ion-icon>
+            <span>Voir fiche produit</span>
+          </ion-button>
       </ion-card-content>
       <swiper-container>
         <swiper-slide>
@@ -139,6 +128,10 @@
             </ion-label>
           </ion-item>
         </ion-list>
+        <ion-button fill="outline" color="danger">
+          <ion-icon name="close-circle-outline" slot="start"></ion-icon>
+          <span>Annuler la commande</span>
+        </ion-button>
       </ion-card-content>
     </ion-card>
   </div>

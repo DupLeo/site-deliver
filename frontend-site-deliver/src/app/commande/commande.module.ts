@@ -12,6 +12,20 @@ import {RowChipsFilterComponent} from "./component/row-chips-filter/row-chips-fi
 import {ModalGererCommandeComponent} from "./component/modal-gerer-commande/modal-gerer-commande.component";
 import {CardCommandeComponent} from "./component/card-commande/card-commande.component";
 import {SharedModule} from "../shared/shared.module";
+import {CardInputPreparationComponent} from "./component/card-etapes/card-input-preparation/card-input-preparation.component";
+import {CardInputValidationComponent} from "./component/card-etapes/card-input-validation/card-input-validation.component";
+import {
+  CardInputControleLivraisonComponent
+} from "./component/card-etapes/card-input-controle-livraison/card-input-controle-livraison.component";
+import {CardInputFinancementComponent} from "./component/card-etapes/card-input-financement/card-input-financement.component";
+import {CardInputVirementComponent} from "./component/card-etapes/card-input-virement/card-input-virement.component";
+import {
+  CardInputDateLivraisonComponent
+} from "./component/card-etapes/card-input-date-livraison/card-input-date-livraison.component";
+import {
+  CardInputPackagingPretComponent
+} from "./component/card-etapes/card-input-packaging-pret/card-input-packaging-pret.component";
+import {SwipperCardEtapeComponent} from "./component/swipper-card-etape/swipper-card-etape.component";
 
 @NgModule({
   imports: [
@@ -21,7 +35,7 @@ import {SharedModule} from "../shared/shared.module";
     CommandePageRoutingModule,
     SharedModule
   ],
-  declarations: [CommandePage, RowCommandeComponent, RowChipsFilterComponent, ModalGererCommandeComponent, CardCommandeComponent],
+  declarations: [CommandePage, RowCommandeComponent, RowChipsFilterComponent, ModalGererCommandeComponent, CardCommandeComponent, CardInputPreparationComponent, CardInputValidationComponent, CardInputControleLivraisonComponent, CardInputFinancementComponent, CardInputVirementComponent, CardInputDateLivraisonComponent, CardInputPackagingPretComponent, SwipperCardEtapeComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class CommandePageModule {}

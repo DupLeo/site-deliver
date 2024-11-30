@@ -1,0 +1,35 @@
+<ion-card>
+  <ion-card-header>
+    <ion-card-title>Configuration du produit</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    <ion-checkbox labelPlacement="end" class="ion-margin-bottom">Documentation présente</ion-checkbox>
+    <ion-toggle labelPlacement="end" [(ngModel)]="showInputs" [enableOnOffLabels]="true">Frais de préparation</ion-toggle>
+    <ng-container *ngIf="showInputs">
+      <ion-list>
+        <ion-item lines="none">
+          <ion-select aria-label="filtre" interface="action-sheet" placeholder="Filter">
+            <ion-select-option value="client">Vrac</ion-select-option>
+            <ion-select-option value="meuble">Assemblé</ion-select-option>
+            <ion-select-option value="commande">Protegé</ion-select-option>
+            <ion-select-option value="commande">Emballé</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-list>
+      <ion-input
+        label="Montant"
+        label-placement="floating"
+        fill="outline"
+        placeholder="Entrer le montant "
+        class="ion-margin-bottom">
+      </ion-input>
+      <ion-input
+        label="Commentaire"
+        label-placement="floating"
+        fill="outline"
+        placeholder="Entrer ">
+      </ion-input>
+    </ng-container>
+  </ion-card-content>
+  <ion-button fill="solid" class="ion-margin">À valider</ion-button>
+</ion-card>

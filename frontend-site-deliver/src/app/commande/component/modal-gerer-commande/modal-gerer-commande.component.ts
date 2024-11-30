@@ -13,6 +13,7 @@ export class ModalGererCommandeComponent  implements OnInit {
   selectedSegment: string = 'first';
   @Input() commande!: { name: string, status: string };
 
+
   ngOnInit() {}
 
 }

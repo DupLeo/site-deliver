@@ -10,16 +10,14 @@ export class CommandePage implements OnInit {
   constructor() { }
 
   commandesGerer = [
-    { name: 'Chaise en bois', status: 'valider' },
-    { name: 'Table de salle à manger', status: 'preparer' },
-    { name: 'Canapé en cuir', status: 'receptionner' },
-    { name: 'Bureau de travail', status: 'valider' },
-    { name: 'Armoire en métal', status: 'preparer' },
-    { name: 'Commode en bois', status: 'valider' },
-    { name: 'Chaise de bureau', status: 'receptionner' },
-    { name: 'Bibliothèque', status: 'preparer' },
-    { name: 'Lampe de chevet', status: 'valider' },
-    { name: 'Meuble TV', status: 'receptionner' },
+    { name: 'Chaise en bois', status: 'disponibilite' },
+    { name: 'Canapé en cuir', status: 'packaging' },
+    { name: 'Bureau de travail', status: 'date livraison' },
+    { name: 'Armoire en métal', status: 'financement' },
+    { name: 'Commode en bois', status: 'disponibilite' },
+    { name: 'Lampe de chevet', status: 'configuration' },
+    { name: 'Meuble TV 2', status: 'virement' },
+    { name: 'Meuble TV 3', status: 'controle livraison' },
   ];
 
   commandesSuivi = [

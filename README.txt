@@ -13,6 +13,11 @@ Aller dans le dossier frontend
 Build projet ionic angular
 docker build -t frontend-angular -f Dockerfile.frontend .
 
+============
+Installer la dépendance swiper. Dans /frontend-site-deliver ! :
+npm install swiper
+
+
 ==============
 Démarrer server : 
 node server.js 

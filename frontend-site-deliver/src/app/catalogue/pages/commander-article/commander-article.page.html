@@ -1,57 +1,79 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>commander-article</ion-title>
+    <!-- Bouton retour à l'article a été sélectionné -->
+    <ion-item [button]="true" [routerLink]="['/catalogue/', 'article-info', this.idArticle]" (click)="reset()">
+      <ion-icon name="close-outline"></ion-icon>
+    </ion-item>
   </ion-toolbar>
-  <!-- Bouton retour à l'article a été sélectionné -->
-  <ion-item [button]="true" [routerLink]="['/catalogue/', 'article-info', this.idArticle]" (click)="reset()">
-    <ion-icon name="arrow-back-outline"></ion-icon>Back
-  </ion-item>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-item button *ngIf=" this.etape > 1 && this.etape < 4" (click)="retour()"><ion-icon name="arrow-back-outline"></ion-icon>Revenir</ion-item>
+<ion-content [fullscreen]="false">
+  <ion-item button *ngIf=" this.etape > 1 && this.etape < 3" (click)="retour()"><ion-icon name="arrow-back-outline"></ion-icon>Revenir</ion-item>
 
-  <ion-content *ngIf=" this.etape == 1">
+  <div *ngIf=" this.etape == 1">
     <!-- Formulaire pour ajouter un client -->
     <h2>Informations clients</h2>
     <ion-item>
-      <ion-input label="Nom client" labelPlacement="floating" placeholder="Nom prénom" [(ngModel)]="client.nom"></ion-input>
+      <ion-input label="Nom client" placeholder="Nom prénom" [(ngModel)]="client.nom"></ion-input>
     </ion-item>
     <ion-item>
       <ion-input
         type="email"
-        fill="solid"
         label="Email"
-        labelPlacement="floating"
         errorText="Invalide Mail"
+        placeholder="client@domaine.com"
         ngModel
         email
         [(ngModel)]="client.mail"
       ></ion-input>
     </ion-item>
     <ion-item>
-      <ion-input label="Numéro de Télephone" labelPlacement="floating" type="tel" placeholder="888-888-8888" [(ngModel)]="client.tel"></ion-input>
+      <ion-input label="Numéro de Télephone" type="tel" placeholder="888-888-8888" [(ngModel)]="client.tel"></ion-input>
     </ion-item>
+    <ion-button (click)="isInfoClientOk()">Valider</ion-button>
+  </div>
 
-
-  </ion-content>
-
-  <ion-content *ngIf=" this.etape == 2">
+  <div *ngIf="this.etape == 2">
     <!-- Ajouter une adresse de livraison et une destination-->
-    <p>Etape 2</p>
-  </ion-content>
+    <h2>Adresse de livraison</h2>
+    <ion-card>MAP</ion-card>
+    <ion-item>
+      <ion-label>Site de présence physique</ion-label>
+      <ion-select [(ngModel)]="place1" fill="outline" interface="action-sheet" placeholder="Selectionner">
+        <ion-select-option *ngFor="let s of this.Sites" value="{{s}}">{{ s }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Site de livraison</ion-label>
+      <ion-select [(ngModel)]="place2" fill="outline" interface="action-sheet" placeholder="Selectionner">
+        <ion-select-option *ngFor="let s of this.Sites" value="{{s}}">{{ s }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Ajouter un commentaire</ion-label>
+      <ion-input [(ngModel)]="this.comm" placeholder="Ajoutez un commentaire pour donner des précisions sur la livraison"></ion-input>
+    </ion-item>
+    <ion-button (click)="isInfoLivraisonOk()">Enregistrer</ion-button>
+  </div>
 
-  <ion-content *ngIf=" this.etape == 3">
-    <!-- -->
-    <p>Etape 3</p>
-  </ion-content>
-
-  <ion-content *ngIf=" this.etape == 4">
+  <div *ngIf="this.etape == 3">
     <!-- Infos de la commande avec confirmation -->
-    <p>Recap de la commande</p>
-  </ion-content>
+    <h2>MAP</h2>
+    <app-article [article]="this.Article"></app-article>
+    <h2>Article...</h2>
+    <ion-item>
+      <h3>{{this.Commande.sitePresence}} to : {{this.Commande.siteLivraison}}</h3>
+    </ion-item>
+    <ion-card>
+      <ion-card-title>Infos client:</ion-card-title>
+      <ion-card-subtitle>{{this.client.nom}}</ion-card-subtitle>
+      <ion-card-subtitle>Mail : {{this.client.mail}}</ion-card-subtitle>
+      <ion-card-subtitle>Tel : {{ this.client.tel }}</ion-card-subtitle>
+    </ion-card>
+  </div>
 
-  <ion-button *ngIf="this.etape < 4" (click)="isEverythingOk()">Valider</ion-button>
+
   <ion-toast
     [isOpen]="isToastOpen"
     message="Veuillez entrer des informations valides"

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from "../services/api/user.service";
 
 @Component({
   selector: 'app-profil',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfilPage implements OnInit {
 
-  constructor() { }
+  constructor(private userService: UserService) {}
 
   ngOnInit() {
   }
@@ -19,8 +20,8 @@ export class ProfilPage implements OnInit {
     store: 'Magasin ABC'
   };
 
-  logout() {
-    // Logic for logout
+  logout(){
+    this.userService.logout()
   }
 
 }

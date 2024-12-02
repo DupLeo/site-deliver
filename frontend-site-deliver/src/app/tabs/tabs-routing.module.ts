@@ -21,10 +21,6 @@ const routes: Routes = [
         loadChildren: () => import('../profil/profil.module').then(m => m.ProfilPageModule)
       },
       {
-        path: 'tab3',
-        loadChildren: () => import('../tab3/tab3.module').then(m => m.Tab3PageModule)
-      },
-      {
         path: '',
         redirectTo: '/tabs/commande',
         pathMatch: 'full'

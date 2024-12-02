@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import { ServiceGestionAccesCommandeService} from "../../service/service-gestion-acces-commande.service";
 
 
 @Component({
@@ -18,7 +19,7 @@ export class SwipperCardEtapeComponent  implements OnInit {
     dateLivraison: 6,
     packaging: 7
   }
-  constructor() { }
+  constructor(private serviceCommande :ServiceGestionAccesCommandeService) { }
 
   ngOnInit() {
   }
@@ -30,6 +31,7 @@ export class SwipperCardEtapeComponent  implements OnInit {
 
   autorisationAccesEtape(etape: keyof typeof this.indiceEtape): boolean {
     const statusIndex = this.indiceEtape[this.commande.status as keyof typeof this.indiceEtape];
-    return this.indiceEtape[etape] <= statusIndex;
+    const accesRole = this.serviceCommande.autorisationAccesRoleEtape(etape)
+    return (this.indiceEtape[etape] <= statusIndex) && accesRole;
   }
 }

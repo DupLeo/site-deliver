@@ -33,7 +33,9 @@ var loginUserControllerFn = async (req, res) => {
             res.send({
                 status: true,
                 message: 'Login successful',
-                token: token // Retourne le token généré
+                token: token,
+                user: result.user,
+
             });
         } else {
             res.send({ status: false, message: result.msg });

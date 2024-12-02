@@ -27,6 +27,35 @@
         <ion-input type="password" errorText="Invalid password" [(ngModel)]="confirmPassword" label="confirm Password" placeholder="confirm password" ></ion-input>
       </ion-item>
 
+      <ion-item>
+        <ion-list>
+          <ion-item lines="none">
+            <ion-select [(ngModel)]="poste" aria-label="filtre" interface="action-sheet" placeholder="Poste">
+              <ion-select-option value="vendeur">Vendeur</ion-select-option>
+              <ion-select-option value="rco">Responsable commercial</ion-select-option>
+              <ion-select-option value="secretariat">Secrétariat</ion-select-option>
+              <ion-select-option value="expertProduit">Expert Produit</ion-select-option>
+              <ion-select-option value="accessoiriste">Accessoiriste</ion-select-option>
+              <ion-select-option value="financialManager">Financial Manager</ion-select-option>
+              <ion-select-option value="comptabilite">Comptabilité</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-list>
+      </ion-item>
+
+      <ion-item>
+        <ion-list>
+          <ion-item lines="none">
+            <ion-select [(ngModel)]="ville" aria-label="filtre" interface="action-sheet" placeholder="Ville">
+              <ion-select-option value="chambery">Chambery</ion-select-option>
+              <ion-select-option value="annecy">Annecy</ion-select-option>
+              <ion-select-option value="albertville">Albertville</ion-select-option>
+              <ion-select-option value="thonon">Thonon</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-list>
+      </ion-item>
+
       <ion-button type="submit" (click)="save()" expand="block">Confirm</ion-button>
 
     </ion-list>

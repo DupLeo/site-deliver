@@ -15,6 +15,8 @@ export class RegisterComponent {
   email: string ="";
   password: string ="";
   confirmPassword: string ="";
+  poste: string ="";
+  ville: string ="";
 
 
   constructor(private userService: UserService) {}
@@ -24,8 +26,8 @@ export class RegisterComponent {
       alert('Passwords do not match');
       return;
     }
-
-    this.userService.register(this.firstname, this.lastname, this.email, this.password).subscribe(
+    console.log(this.poste, this.ville);
+    this.userService.register(this.firstname, this.lastname, this.email, this.password, this.poste, this.ville).subscribe(
       (resultData: any) => {
         console.log(resultData);
         alert('User Registered Successfully');

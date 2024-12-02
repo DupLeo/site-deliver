@@ -20,6 +20,8 @@ module.exports.createStudentDBService = async (userDetails) => {
             lastname: userDetails.lastname,
             email: userDetails.email,
             password: encrypted,
+            poste: userDetails.poste,
+            ville: userDetails.ville,
         });
 
         console.log("User saved successfully!");
@@ -38,7 +40,19 @@ module.exports.loginuserDBService = async (userDetails) => {
             var decrypted = encryptor.decrypt(result.password);
 
             if (decrypted === userDetails.password) {
-                return { status: true, msg: "User Validated Successfully" };
+                // Retourner les informations utilisateur en cas de succès
+                return {
+                    status: true,
+                    msg: "User Validated Successfully",
+                    user: {
+                        id: result.id,
+                        firstname: result.firstname,
+                        lastname: result.lastname,
+                        email: result.email,
+                        poste: result.poste,
+                        ville: result.ville, // Assurez-vous que la colonne existe dans votre modèle User
+                    }
+                };
             } else {
                 return { status: false, msg: "User Validation Failed" };
             }
@@ -46,6 +60,8 @@ module.exports.loginuserDBService = async (userDetails) => {
             return { status: false, msg: "User not found" };
         }
     } catch (error) {
+        console.error("Error in loginuserDBService:", error);
         return { status: false, msg: "Invalid Data" };
     }
 };
+

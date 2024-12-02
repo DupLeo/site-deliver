@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
+import {CommandePage} from "../../../commande/commande.page";
 
 @Component({
   selector: 'app-commander-article',
@@ -11,9 +12,13 @@ export class CommanderArticlePage implements OnInit {
   @Input() idArticle : any;
   Article: any;
   etape : number = 1;
-  isEnable = true;
-  client = {nom:null,mail:null,tel:null}
+  client = {nom:"",mail:"",tel:""}
   isToastOpen = false;
+  Sites: any;
+  place1 : string = "";
+  place2 : string = "";
+  comm : string = "";
+  Commande = {idArticle:1, client: {}, sitePresence:"", siteLivraison:"", commentaire:""};
 
 
 
@@ -24,12 +29,18 @@ export class CommanderArticlePage implements OnInit {
       this.idArticle = params.get('id');
     });
     this.getItem();
-    console.log(this.idArticle);
+    this.getSites();
+    this.Commande.idArticle = this.idArticle;
   }
 
   getItem(){
     // recherche avec l'id en utilisant AXIOS vers la BDD
     this.Article =  {id: 1, nom:"Table de bureau",price:"20", desc:"petite table de bureau."};
+  }
+
+  // récupère la liste des sites dispo
+  getSites(){
+    this.Sites = [ "Chambéry", "Annecy", "Bourg-en-Bresse", "Toulouse","Lyon"];
   }
 
   suivant(){
@@ -44,37 +55,36 @@ export class CommanderArticlePage implements OnInit {
     this.Article = {};
   }
 
-  // les infos du client n'ont pas été entré
-  weshYaRien(){
-    return (this.client.tel == null && this.client.nom == null && this.client.mail == null);
-  }
-
-  mailClientValide(){
-    if(this.client.mail ){}
-  }
-
   // les informations du client sont tout bon
   // TODO : Ajouter des conditions (Format des mails, telemphone, etc...)
   infoClientOk(){
     // retourne un booléen si le formulaire du client est ok
-    return ((this.client.nom == null || this.client.nom == "") ||
-    (this.client.mail == null || this.client.mail == "") ||
-    (this.client.tel == null || this.client.tel == "")) ||
-      this.weshYaRien();
-
-
+    return this.client.nom && this.client.mail && this.client.tel &&
+      this.client.nom !== "" && this.client.mail !== "" && this.client.tel !== "";
   }
 
-  // si tout les formulaires sont ok
-  isEverythingOk(){
+  isInfoClientOk(){
     // vérifier si le formulaire est correct
     if(this.infoClientOk()){
-      console.log(this.client)
-      this.setOpenToast(true);
-      this.isEnable = true;
-    } else {
       this.setOpenToast(false);
+      this.Commande.client = this.client;
+      this.suivant();
+    } else {
+      this.setOpenToast(true);
     }
+  }
+
+  isInfoLivraisonOk(){
+    if(this.place1 != "" && this.place2 != "" && this.place1 != this.place2){
+      this.Commande.sitePresence = this.place1;
+      this.Commande.siteLivraison = this.place2;
+      this.Commande.commentaire = this.comm;
+      this.setOpenToast(false);
+      this.suivant();
+    } else {
+      this.setOpenToast(true);
+    }
+
   }
 
   setOpenToast(isok : boolean){

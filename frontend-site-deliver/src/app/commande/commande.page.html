@@ -24,10 +24,12 @@
         <app-row-chips-filter (filterChanged)="onFilterChanged($event)"></app-row-chips-filter>
       </ion-toolbar>
     </ion-header>
-      <app-row-commande [commandes]="filteredGererCommandes" ></app-row-commande>
+      <app-row-commande [commandes]="commandesFiltreEtape" ></app-row-commande>
   </ng-container>
 
   <ng-container *ngIf="selectedSegment === 'suivi'">
+    <app-row-commande [commandes]="commandesSuivi" ></app-row-commande>
+
   </ng-container>
 </ion-content>
 

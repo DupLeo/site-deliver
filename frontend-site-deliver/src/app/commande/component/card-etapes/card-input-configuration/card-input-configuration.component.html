@@ -5,6 +5,7 @@
   <ion-card-content>
     <ion-item lines="none">
       <ion-checkbox
+        [disabled]="disabled"
         slot="start"
         labelPlacement="end"
         [(ngModel)]="commande.documentation"
@@ -14,6 +15,7 @@
     </ion-item>
     <ion-item lines="none">
       <ion-toggle
+        [disabled]="disabled"
         slot="start"
         labelPlacement="end"
         [(ngModel)]="commande.preparationFee.enabled"
@@ -25,6 +27,7 @@
       <ion-list>
         <ion-item lines="none">
           <ion-select
+            [disabled]="disabled"
             [(ngModel)]="commande.preparationFee.type"
             aria-label="filtre"
             interface="action-sheet"
@@ -38,6 +41,7 @@
         </ion-item>
       </ion-list>
       <ion-input
+        [disabled]="disabled"
         label="Montant"
         label-placement="floating"
         fill="outline"
@@ -46,6 +50,7 @@
         [(ngModel)]="commande.preparationFee.amount"
       ></ion-input>
       <ion-input
+        [disabled]="disabled"
         label="Commentaire"
         label-placement="floating"
         fill="outline"
@@ -54,5 +59,5 @@
       ></ion-input>
     </ng-container>
   </ion-card-content>
-  <ion-button fill="solid" class="ion-margin">À valider</ion-button>
+  <ion-button [disabled]="disabled" fill="solid" class="ion-margin">À valider</ion-button>
 </ion-card>

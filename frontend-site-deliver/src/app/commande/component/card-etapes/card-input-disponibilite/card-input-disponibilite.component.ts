@@ -11,6 +11,7 @@ export class CardInputDisponibiliteComponent  implements OnInit {
 
   ngOnInit() {}
   @Input() commande!: { availability: string,  selectedDate: string }
+  @Input() disabled!: boolean;
 
 
 

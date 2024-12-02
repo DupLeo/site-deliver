@@ -7,6 +7,7 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class CardInputFinancementComponent  implements OnInit {
   @Input() commande!: { status: string }
+  @Input() disabled!: boolean;
 
 
 constructor() { }

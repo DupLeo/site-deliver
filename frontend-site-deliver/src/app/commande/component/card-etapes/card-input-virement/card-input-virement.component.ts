@@ -8,6 +8,7 @@ import {Component, Input, OnInit} from '@angular/core';
 export class CardInputVirementComponent  implements OnInit {
   showInputs = true;
   @Input() commande!: { status: boolean, commentaire: string} ;
+  @Input() disabled!: boolean;
 
   constructor() { }
 

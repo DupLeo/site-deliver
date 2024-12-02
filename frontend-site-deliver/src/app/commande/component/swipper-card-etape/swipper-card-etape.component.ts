@@ -34,4 +34,9 @@ export class SwipperCardEtapeComponent  implements OnInit {
     const accesRole = this.serviceCommande.autorisationAccesRoleEtape(etape)
     return (this.indiceEtape[etape] <= statusIndex) && accesRole;
   }
+
+  modifiable(etape: keyof typeof this.indiceEtape): boolean {
+    const statusIndex = this.indiceEtape[this.commande.status as keyof typeof this.indiceEtape];
+    return (this.indiceEtape[etape] < statusIndex)
+  }
 }

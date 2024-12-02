@@ -1,7 +1,8 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 
-import { commandesGerer } from '../data/commandes-data';
+import { commandes } from '../data/commandes-data';
 import { Commande } from '../data/interfaceCommande'
+import  {ServiceGestionAccesCommandeService} from "./service/service-gestion-acces-commande.service";
 
 
 @Component({
@@ -11,36 +12,25 @@ import { Commande } from '../data/interfaceCommande'
 })
 export class CommandePage implements OnInit {
 
-  constructor() { }
+  constructor(private serviceAccesCommande: ServiceGestionAccesCommandeService) { }
 
 
   selectedSegment: string = 'gerer';
-  selectedFilter: string = '';
+  selectedFilter: string = "";
   nbCommandeGerer: number = 0;
   nbCommandeSuivi: number = 0;
-  filteredGererCommandes: Commande[] = [];
+  commandesFiltreRole: Commande[] = [];
+  commandesFiltreEtape: Commande[] = [];
+  commandesSuivi: Commande[] = [];
 
-
-  commandesSuivi = [
-    { name: 'Table basse', status: 'en attente de validation du comptable' },
-    { name: 'Chiffonnier', status: 'en cours de livraison' },
-    { name: 'Tabouret', status: 'en attente de validation du comptable' },
-    { name: 'Lit double', status: 'en cours de livraison' },
-    { name: 'Meuble à chaussures', status: 'en attente de validation du comptable' },
-    { name: 'Buffet', status: 'en cours de livraison' },
-    { name: 'Chaise longue', status: 'en attente de validation du comptable' },
-    { name: 'Étagère murale', status: 'en cours de livraison' },
-    { name: 'Buffet de cuisine', status: 'en attente de validation du comptable' },
-    { name: 'Console d’entrée', status: 'en cours de livraison' },
-  ];
 
   commandesCurrent: { name: string, status: string }[] = [];
 
   ngOnInit() {
-    this.filteredGererCommandes = [...commandesGerer];
-
+    this.filterCommandeInit()
     this.updateCounts();
     this.changeTypeCommande();
+    this.filterCommandes();
   }
 
   onFilterChanged(filter: string) {
@@ -48,29 +38,41 @@ export class CommandePage implements OnInit {
     this.filterCommandes();
   }
 
+  filterCommandeInit() {
+    this.commandesFiltreRole = [];
+    this.commandesSuivi = [];
+
+    commandes.forEach((commande) => {
+      if (this.serviceAccesCommande.autorisationAccesRoleEtape(commande.status)) {
+        this.commandesFiltreRole.push(commande);
+      } else {
+        this.commandesSuivi.push(commande);
+      }
+    });
+
+    this.updateCounts();
+  }
+
   filterCommandes() {
     if (this.selectedFilter) {
-      this.filteredGererCommandes = commandesGerer.filter(
+      this.commandesFiltreEtape = this.commandesFiltreRole.filter(
         (commande) => commande.status === this.selectedFilter
       );
     } else {
-      this.filteredGererCommandes = [...commandesGerer];
+      this.commandesFiltreEtape = [...this.commandesFiltreRole];
     }
     this.updateCounts();
   }
 
   updateCounts() {
-    this.nbCommandeGerer = this.filteredGererCommandes.length;
-    this.nbCommandeSuivi = 10;
+    this.nbCommandeGerer = this.commandesFiltreEtape.length;
+    this.nbCommandeSuivi = this.commandesSuivi.length;
   }
 
   changeTypeCommande() {
     this.commandesCurrent =
       this.selectedSegment === 'gerer'
-        ? this.filteredGererCommandes
+        ? this.commandesFiltreEtape
         : this.commandesSuivi;
   }
-
-
-
 }

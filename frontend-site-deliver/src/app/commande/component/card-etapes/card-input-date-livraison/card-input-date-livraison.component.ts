@@ -7,6 +7,7 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class CardInputDateLivraisonComponent  implements OnInit {
   @Input() commande!: { estimatedDate: Date };
+  @Input() disabled!: boolean;
 
   constructor() { }
 

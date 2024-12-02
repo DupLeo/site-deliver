@@ -1,8 +1,10 @@
 <div class="ion-accordion-toggle-icon">
-  <ion-chip
-    *ngFor="let chip of chips"
-    [outline]="selectedFilter === chip.value"
-    (click)="filterCommande(chip.value)">
-    {{ chip.label }}
-  </ion-chip>
+  <ng-container *ngFor="let chip of chips">
+    <ion-chip
+      *ngIf="afficherChipsRole(chip.value)"
+      [outline]="selectedFilter === chip.value"
+      (click)="filterCommande(chip.value)">
+      {{ chip.label }}
+    </ion-chip>
+  </ng-container>
 </div>

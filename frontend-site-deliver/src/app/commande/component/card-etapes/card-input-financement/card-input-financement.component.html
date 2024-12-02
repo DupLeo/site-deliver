@@ -4,21 +4,21 @@
   </ion-card-header>
   <ion-card-content>
     <ion-list>
-      <ion-radio-group [(ngModel)]="commande.status">
+      <ion-radio-group [disabled]="disabled" [(ngModel)]="commande.status">
         <ion-item>
-          <ion-radio value="oui">Oui</ion-radio>
+          <ion-radio [disabled]="disabled" value="oui">Oui</ion-radio>
         </ion-item>
         <ion-item>
-          <ion-radio value="non">Non</ion-radio>
+          <ion-radio [disabled]="disabled" value="non">Non</ion-radio>
         </ion-item>
         <ion-item>
-          <ion-radio value="livraison">A la livraison</ion-radio>
+          <ion-radio [disabled]="disabled" value="livraison">A la livraison</ion-radio>
         </ion-item>
         <ion-item>
-          <ion-radio value="sans objet">Sans objet</ion-radio>
+          <ion-radio [disabled]="disabled" value="sans objet">Sans objet</ion-radio>
         </ion-item>
       </ion-radio-group>
     </ion-list>
   </ion-card-content>
-  <ion-button class="ion-margin" fill="solid">Valider</ion-button>
+  <ion-button [disabled]="disabled" class="ion-margin" fill="solid">Valider</ion-button>
 </ion-card>

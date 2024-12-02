@@ -10,6 +10,7 @@ export class CardInputControleLivraisonComponent implements OnInit {
   @Input() commande!:  { passage: Boolean, date: Date, configuration: Boolean } ;
 
   selectedDate!: Date | undefined;  // Indique que cette propriété sera assignée plus tard
+  @Input() disabled!: boolean;
 
   constructor() { }
 

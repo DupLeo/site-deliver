@@ -4,7 +4,7 @@
   </ion-card-header>
   <ion-card-content>
     <ion-list>
-      <ion-radio-group [(ngModel)]="commande.availability">
+      <ion-radio-group [disabled]="disabled" [(ngModel)]="commande.availability">
         <ion-item>
           <ion-radio value="pas disponible"><ion-card-subtitle>Pas disponible</ion-card-subtitle></ion-radio>
         </ion-item>
@@ -17,7 +17,7 @@
       </ion-radio-group>
     </ion-list>
     <ion-item *ngIf="commande.availability === 'disponible ulterieurement'">
-      <ion-datetime display-format="DD/MM/YYYY" [(ngModel)]="commande.selectedDate"></ion-datetime>
+      <ion-datetime [disabled]="disabled" display-format="DD/MM/YYYY" [(ngModel)]="commande.selectedDate"></ion-datetime>
     </ion-item>
     <ion-button fill="solid" class="ion-padding">Envoyer</ion-button>
   </ion-card-content>

@@ -7,6 +7,7 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class CardInputPackagingPretComponent  implements OnInit {
   @Input() commande!: {readyForPackaging: string};
+  @Input() disabled!: boolean;
 
   constructor() { }
 

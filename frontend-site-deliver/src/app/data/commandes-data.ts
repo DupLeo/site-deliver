@@ -1,4 +1,4 @@
-export const commandesGerer = [
+export const commandes = [
   {
     name: 'Chaise en bois',
     status: 'disponibilite',

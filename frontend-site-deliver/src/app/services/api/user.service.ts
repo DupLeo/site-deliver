@@ -19,8 +19,6 @@ export class UserService {
         if (response.status && response.token) {
           localStorage.setItem('authToken', response.token);
           localStorage.setItem('userInfo', JSON.stringify(response.user));
-          const userInfo = localStorage.getItem('userInfo');
-          console.log(userInfo)
         }
       })
     );
@@ -47,12 +45,13 @@ export class UserService {
     localStorage.removeItem('authToken');
     localStorage.removeItem('userInfo');  // Supprimer les informations utilisateur lors de la déconnexion
     this.router.navigate(['/conn-auth']);  // Ajustez l'URL en fonction de votre application
+    window.location.reload();
+
   }
 
   // Récupérer les informations utilisateur
   getUserInfo(): User | null {
     const userInfo = localStorage.getItem('userInfo');
-    console.log(userInfo)
     return userInfo ? JSON.parse(userInfo) : null;
   }
 }

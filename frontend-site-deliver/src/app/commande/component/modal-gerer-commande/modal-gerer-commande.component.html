@@ -9,7 +9,7 @@
 
 
   <ion-segment [(ngModel)]="selectedSegment">
-    <ion-segment-button value="first">
+    <ion-segment-button value="first" *ngIf="actionPossibleRole">
       <ion-label class="ion-text-small">Action</ion-label>
     </ion-segment-button>
     <ion-segment-button value="second">

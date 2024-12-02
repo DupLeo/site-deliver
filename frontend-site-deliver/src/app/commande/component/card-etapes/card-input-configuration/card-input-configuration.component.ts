@@ -10,6 +10,7 @@ export class CardInputConfigurationComponent  implements OnInit {
   constructor() { }
 
   @Input() commande! : { documentation: boolean, preparationFee: { enabled: boolean, type: string, amount: number, comment: string } }
+  @Input() disabled!: boolean;
 
 
   ngOnInit() {}

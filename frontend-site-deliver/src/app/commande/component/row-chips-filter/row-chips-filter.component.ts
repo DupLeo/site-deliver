@@ -13,10 +13,10 @@ export class RowChipsFilterComponent {
   chips = [
     { label: 'Disponibilité', value: 'disponibilite' },
     { label: 'Configuration', value: 'configuration' },
-    { label: 'Controle livraison', value: 'controle livraison' },
+    { label: 'Controle livraison', value: 'controleLivraison' },
     { label: 'Financement', value: 'financement' },
     { label: 'Virement', value: 'virement' },
-    { label: 'Date livraison', value: 'date livraison' },
+    { label: 'Date livraison', value: 'dateLivraison' },
     { label: 'Packaging', value: 'packaging' },
 
   ];

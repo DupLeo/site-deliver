@@ -3,9 +3,11 @@
     <ion-card-title>Virement</ion-card-title>
   </ion-card-header>
   <ion-card-content>
-    <ion-toggle class="ion-margin" [(ngModel)]="showInputs" [enableOnOffLabels]="true">Virement reçu</ion-toggle>
-    <ion-item lines="none" *ngIf="!showInputs">
-      <ion-input class="ion-margin-vertical" label="Entrer la raison" label-placement="floating" fill="outline" placeholder="Enter text"></ion-input>
+    <ion-toggle class="ion-margin" [(ngModel)]="commande.status">Virement reçu</ion-toggle>
+    <ion-item lines="none" *ngIf="!commande.status">
+      <ion-input class="ion-margin-vertical" label="Entrer la raison" label-placement="floating" fill="outline" placeholder="Enter text"
+                 [(ngModel)]="commande.commentaire">
+      </ion-input>
     </ion-item>
   </ion-card-content>
   <ion-button class="ion-margin" fill="solid">Valider</ion-button>

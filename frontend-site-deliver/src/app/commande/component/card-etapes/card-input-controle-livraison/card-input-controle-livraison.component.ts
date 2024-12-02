@@ -1,20 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-card-input-controle-livraison',
   templateUrl: './card-input-controle-livraison.component.html',
   styleUrls: ['./card-input-controle-livraison.component.scss'],
 })
-export class CardInputControleLivraisonComponent  implements OnInit {
+export class CardInputControleLivraisonComponent implements OnInit {
+
+  @Input() commande!:  { passage: Boolean, date: Date, configuration: Boolean } ;
+
+  selectedDate!: Date | undefined;  // Indique que cette propriété sera assignée plus tard
 
   constructor() { }
 
-  ngOnInit() {}
-
-  showInputsDate = false;
-  selectedDate: string | null = null; // Stocke la date sélectionnée
-
-
-
-
+  ngOnInit() {
+    this.selectedDate = this.commande?.date
+  }
 }
+

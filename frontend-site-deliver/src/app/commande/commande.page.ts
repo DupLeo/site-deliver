@@ -1,5 +1,9 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 
+import { commandesGerer } from '../data/commandes-data';
+import { Commande } from '../data/interfaceCommande'
+
+
 @Component({
   selector: 'app-commande',
   templateUrl: './commande.page.html',
@@ -9,16 +13,13 @@ export class CommandePage implements OnInit {
 
   constructor() { }
 
-  commandesGerer = [
-    { name: 'Chaise en bois', status: 'disponibilite' },
-    { name: 'Canapé en cuir', status: 'packaging' },
-    { name: 'Bureau de travail', status: 'date livraison' },
-    { name: 'Armoire en métal', status: 'financement' },
-    { name: 'Commode en bois', status: 'disponibilite' },
-    { name: 'Lampe de chevet', status: 'configuration' },
-    { name: 'Meuble TV 2', status: 'virement' },
-    { name: 'Meuble TV 3', status: 'controle livraison' },
-  ];
+
+  selectedSegment: string = 'gerer';
+  selectedFilter: string = '';
+  nbCommandeGerer: number = 0;
+  nbCommandeSuivi: number = 0;
+  filteredGererCommandes: Commande[] = [];
+
 
   commandesSuivi = [
     { name: 'Table basse', status: 'en attente de validation du comptable' },
@@ -33,15 +34,11 @@ export class CommandePage implements OnInit {
     { name: 'Console d’entrée', status: 'en cours de livraison' },
   ];
 
-  selectedSegment: string = 'gerer';
-  selectedFilter: string = '';
-  nbCommandeGerer: number = 0;
-  nbCommandeSuivi: number = 0;
-  filteredGererCommandes: { name: string, status: string }[] = [];
   commandesCurrent: { name: string, status: string }[] = [];
 
   ngOnInit() {
-    this.filteredGererCommandes = [...this.commandesGerer];
+    this.filteredGererCommandes = [...commandesGerer];
+
     this.updateCounts();
     this.changeTypeCommande();
   }
@@ -53,18 +50,18 @@ export class CommandePage implements OnInit {
 
   filterCommandes() {
     if (this.selectedFilter) {
-      this.filteredGererCommandes = this.commandesGerer.filter(
+      this.filteredGererCommandes = commandesGerer.filter(
         (commande) => commande.status === this.selectedFilter
       );
     } else {
-      this.filteredGererCommandes = [...this.commandesGerer];
+      this.filteredGererCommandes = [...commandesGerer];
     }
     this.updateCounts();
   }
 
   updateCounts() {
     this.nbCommandeGerer = this.filteredGererCommandes.length;
-    this.nbCommandeSuivi = this.commandesSuivi.length;
+    this.nbCommandeSuivi = 10;
   }
 
   changeTypeCommande() {

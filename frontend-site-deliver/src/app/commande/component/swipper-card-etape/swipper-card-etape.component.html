@@ -1,23 +1,25 @@
-<swiper-container>
-  <swiper-slide *ngIf="commande.status === 'disponibilite'">
-    <app-card-input-validation></app-card-input-validation>
+<swiper-container class="ion-margin-bottom" pagination="true" [initialSlide]="getLastIndex()">
+  <swiper-slide *ngIf="autorisationAccesEtape('disponibilite')">
+    <app-card-input-disponibilite [commande]="(commande.etapesHistorique['disponibilite'].donnees)"></app-card-input-disponibilite>
   </swiper-slide>
-  <swiper-slide *ngIf="commande.status === 'configuration'">
-    <app-card-input-preparation></app-card-input-preparation>
+  <swiper-slide *ngIf="autorisationAccesEtape('configuration')">
+    <app-card-input-configuration [commande]="(commande.etapesHistorique['configuration'].donnees) "></app-card-input-configuration>
   </swiper-slide>
-  <swiper-slide *ngIf="commande.status === 'controle livraison'">
-    <app-card-input-controle-livraison></app-card-input-controle-livraison>
+  <swiper-slide *ngIf="autorisationAccesEtape('controleLivraison')">
+    <app-card-input-controle-livraison [commande]="(commande.etapesHistorique['controleLivraison'].donnees)"></app-card-input-controle-livraison>
   </swiper-slide>
-  <swiper-slide *ngIf="commande.status === 'financement'">
-    <app-card-input-financement></app-card-input-financement>
+  <swiper-slide *ngIf="autorisationAccesEtape('financement')">
+      <app-card-input-financement [commande]="(commande.etapesHistorique['financement'].donnees)"></app-card-input-financement>
   </swiper-slide>
-  <swiper-slide *ngIf="commande.status === 'virement'">
-    <app-card-input-virement></app-card-input-virement>
+  <swiper-slide *ngIf="autorisationAccesEtape('virement')">
+    <app-card-input-virement [commande]="(commande.etapesHistorique['virement'].donnees)"></app-card-input-virement>
   </swiper-slide>
-  <swiper-slide *ngIf="commande.status === 'date livraison'">
-    <app-card-input-date-livraison></app-card-input-date-livraison>
+  <swiper-slide *ngIf="autorisationAccesEtape('dateLivraison')">
+    <app-card-input-date-livraison [commande]="(commande.etapesHistorique['dateLivraison'].donnees)"></app-card-input-date-livraison>
   </swiper-slide>
-  <swiper-slide *ngIf="commande.status === 'packaging'">
-    <app-card-input-packaging-pret></app-card-input-packaging-pret>
+  <swiper-slide *ngIf="autorisationAccesEtape('packaging')">
+    <app-card-input-packaging-pret [commande]="(commande.etapesHistorique['packaging'].donnees)"></app-card-input-packaging-pret>
   </swiper-slide>
+
+
 </swiper-container>

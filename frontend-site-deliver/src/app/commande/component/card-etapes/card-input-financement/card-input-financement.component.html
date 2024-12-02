@@ -4,7 +4,7 @@
   </ion-card-header>
   <ion-card-content>
     <ion-list>
-      <ion-radio-group>
+      <ion-radio-group [(ngModel)]="commande.status">
         <ion-item>
           <ion-radio value="oui">Oui</ion-radio>
         </ion-item>

@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { CardInputPreparationComponent } from './card-input-preparation.component';
+import { CardInputDisponibiliteComponent } from './card-input-disponibilite.component';
 
-describe('CardInputPreparationComponent', () => {
-  let component: CardInputPreparationComponent;
-  let fixture: ComponentFixture<CardInputPreparationComponent>;
+describe('CardInputDisponibiliteComponent', () => {
+  let component: CardInputDisponibiliteComponent;
+  let fixture: ComponentFixture<CardInputDisponibiliteComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ CardInputPreparationComponent ],
+      declarations: [ CardInputDisponibiliteComponent ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(CardInputPreparationComponent);
+    fixture = TestBed.createComponent(CardInputDisponibiliteComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

@@ -7,22 +7,30 @@
 
 <ion-content>
 
-  <app-swipper-card-etape [commande]="commande"></app-swipper-card-etape>
 
   <ion-segment [(ngModel)]="selectedSegment">
     <ion-segment-button value="first">
-      <ion-label>Info produit</ion-label>
+      <ion-label class="ion-text-small">Action</ion-label>
     </ion-segment-button>
     <ion-segment-button value="second">
-      <ion-label>Info commande</ion-label>
+      <ion-label class="ion-text-small">Produit</ion-label>
     </ion-segment-button>
     <ion-segment-button value="third">
-      <ion-label>Historique commande</ion-label>
+      <ion-label class="ion-text-small">Commande</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="fourth">
+      <ion-label class="ion-text-small">Historique</ion-label>
     </ion-segment-button>
   </ion-segment>
 
-  <!-- Segment pour les informations du produit -->
+
+
   <div *ngIf="selectedSegment === 'first'">
+    <app-swipper-card-etape class="ion-margin-vertical" [commande]="commande"></app-swipper-card-etape>
+  </div>
+
+  <!-- Segment pour les informations du produit -->
+  <div *ngIf="selectedSegment === 'second'">
     <ion-card style="margin-bottom: 70px">
       <ion-card-header>
         <ion-card-title>Informations sur le produit</ion-card-title>
@@ -76,7 +84,7 @@
   </div>
 
   <!-- Segment pour les informations de la commande -->
-  <div *ngIf="selectedSegment === 'second'">
+  <div *ngIf="selectedSegment === 'third'">
     <ion-card style="margin-bottom: 70px">
       <ion-card-header>
         <ion-card-title>Informations sur la commande</ion-card-title>
@@ -136,7 +144,7 @@
     </ion-card>
   </div>
 
-  <div *ngIf="selectedSegment === 'third'">
+  <div *ngIf="selectedSegment === 'fourth'">
     <!-- Historique des étapes de la commande -->
     <ion-card style="margin-bottom: 70px">
       <ion-card-header>

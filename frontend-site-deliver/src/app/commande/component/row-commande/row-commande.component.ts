@@ -7,6 +7,6 @@ import {Component, Input} from '@angular/core';
 })
 
 export class RowCommandeComponent {
-  @Input() commandes : { name: string, status: string }[] = [];
+  @Input() commandes: { name: string; status: string; etapesHistorique: { [key: string]: { donnees: any } } }[] = [];
 }
 

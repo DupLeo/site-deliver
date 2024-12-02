@@ -1,0 +1,28 @@
+<ion-card class="ion-margin-bottom">
+  <ion-card-header>
+    <ion-card-title>Disponibilité</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    <ion-list>
+      <ion-radio-group [(ngModel)]="commande.availability">
+        <ion-item>
+          <ion-radio value="pas disponible"><ion-card-subtitle>Pas disponible</ion-card-subtitle></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-radio value="disponible immediatement"><ion-card-subtitle>Disponible immédiatement</ion-card-subtitle></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-radio value="disponible ulterieurement"><ion-card-subtitle>Disponible ultérieurement</ion-card-subtitle></ion-radio>
+        </ion-item>
+      </ion-radio-group>
+    </ion-list>
+    <ion-item *ngIf="commande.availability === 'disponible ulterieurement'">
+      <ion-datetime display-format="DD/MM/YYYY" [(ngModel)]="commande.selectedDate"></ion-datetime>
+    </ion-item>
+    <ion-button fill="solid" class="ion-padding">Envoyer</ion-button>
+  </ion-card-content>
+</ion-card>
+
+
+
+

@@ -1,0 +1,58 @@
+<ion-card>
+  <ion-card-header>
+    <ion-card-title>Configuration du produit</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    <ion-item lines="none">
+      <ion-checkbox
+        slot="start"
+        labelPlacement="end"
+        [(ngModel)]="commande.documentation"
+      >
+        <ion-card-subtitle>Documentation présente</ion-card-subtitle>
+      </ion-checkbox>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-toggle
+        slot="start"
+        labelPlacement="end"
+        [(ngModel)]="commande.preparationFee.enabled"
+      >
+        <ion-card-subtitle>Frais de préparation</ion-card-subtitle>
+      </ion-toggle>
+    </ion-item>
+    <ng-container *ngIf="commande.preparationFee.enabled">
+      <ion-list>
+        <ion-item lines="none">
+          <ion-select
+            [(ngModel)]="commande.preparationFee.type"
+            aria-label="filtre"
+            interface="action-sheet"
+            placeholder="Filter"
+          >
+            <ion-select-option value="vrac">Vrac</ion-select-option>
+            <ion-select-option value="assemble">Assemblé</ion-select-option>
+            <ion-select-option value="protege">Protegé</ion-select-option>
+            <ion-select-option value="emballe">Emballé</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-list>
+      <ion-input
+        label="Montant"
+        label-placement="floating"
+        fill="outline"
+        placeholder="Entrer le montant"
+        class="ion-margin-bottom"
+        [(ngModel)]="commande.preparationFee.amount"
+      ></ion-input>
+      <ion-input
+        label="Commentaire"
+        label-placement="floating"
+        fill="outline"
+        placeholder="Entrer"
+        [(ngModel)]="commande.preparationFee.comment"
+      ></ion-input>
+    </ng-container>
+  </ion-card-content>
+  <ion-button fill="solid" class="ion-margin">À valider</ion-button>
+</ion-card>

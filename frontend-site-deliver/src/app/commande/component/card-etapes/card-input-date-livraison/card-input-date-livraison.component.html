@@ -3,7 +3,7 @@
     <ion-card-title>Fixe date livraison</ion-card-title>
   </ion-card-header>
   <ion-card-content>
-    <ion-datetime minuteValues="0,15,30,45" dayValues="5,10,15,20,25,30"></ion-datetime>
+    <ion-datetime minuteValues="0,15,30,45" dayValues="5,10,15,20,25,30" [(ngModel)]="commande.estimatedDate" ></ion-datetime>
     <ion-button class="ion-margin" fill="solid">Valider</ion-button>
   </ion-card-content>
 </ion-card>

@@ -1,13 +1,13 @@
 <ion-card>
   <ion-card-header>
-    <ion-card-title>Controle qualité</ion-card-title>
+    <ion-card-title>Controle livraison</ion-card-title>
   </ion-card-header>
   <ion-card-content>
-    <ion-toggle class="ion-margin" [(ngModel)]="showInputsDate" [enableOnOffLabels]="false"> Date de passage contrôle qualité</ion-toggle>
-    <ion-item *ngIf="showInputsDate">
-      <ion-datetime display-format="DD/MM/YYYY" [(ngModel)]="selectedDate"></ion-datetime>
+    <ion-toggle class="ion-margin" [(ngModel)]="commande.passage"> Date de passage contrôle qualité</ion-toggle>
+    <ion-item *ngIf="commande.passage">
+      <ion-datetime  display-format="DD/MM/YYYY"  [(ngModel)]="selectedDate"></ion-datetime>
     </ion-item>
-    <ion-toggle class="ion-margin" [enableOnOffLabels]="false">Configuration spécifique (packaging)</ion-toggle>
+    <ion-toggle class="ion-margin" [(ngModel)]="commande.configuration">Configuration spécifique (packaging)</ion-toggle>
   </ion-card-content>
   <ion-button class="ion-margin" fill="solid">Valider</ion-button>
 </ion-card>

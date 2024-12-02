@@ -12,8 +12,6 @@ import {RowChipsFilterComponent} from "./component/row-chips-filter/row-chips-fi
 import {ModalGererCommandeComponent} from "./component/modal-gerer-commande/modal-gerer-commande.component";
 import {CardCommandeComponent} from "./component/card-commande/card-commande.component";
 import {SharedModule} from "../shared/shared.module";
-import {CardInputPreparationComponent} from "./component/card-etapes/card-input-preparation/card-input-preparation.component";
-import {CardInputValidationComponent} from "./component/card-etapes/card-input-validation/card-input-validation.component";
 import {
   CardInputControleLivraisonComponent
 } from "./component/card-etapes/card-input-controle-livraison/card-input-controle-livraison.component";
@@ -26,6 +24,12 @@ import {
   CardInputPackagingPretComponent
 } from "./component/card-etapes/card-input-packaging-pret/card-input-packaging-pret.component";
 import {SwipperCardEtapeComponent} from "./component/swipper-card-etape/swipper-card-etape.component";
+import {
+  CardInputConfigurationComponent
+} from "./component/card-etapes/card-input-configuration/card-input-configuration.component";
+import {
+  CardInputDisponibiliteComponent
+} from "./component/card-etapes/card-input-disponibilite/card-input-disponibilite.component";
 
 @NgModule({
   imports: [
@@ -35,7 +39,7 @@ import {SwipperCardEtapeComponent} from "./component/swipper-card-etape/swipper-
     CommandePageRoutingModule,
     SharedModule
   ],
-  declarations: [CommandePage, RowCommandeComponent, RowChipsFilterComponent, ModalGererCommandeComponent, CardCommandeComponent, CardInputPreparationComponent, CardInputValidationComponent, CardInputControleLivraisonComponent, CardInputFinancementComponent, CardInputVirementComponent, CardInputDateLivraisonComponent, CardInputPackagingPretComponent, SwipperCardEtapeComponent],
+  declarations: [CommandePage, RowCommandeComponent, RowChipsFilterComponent, ModalGererCommandeComponent, CardCommandeComponent, CardInputControleLivraisonComponent, CardInputFinancementComponent, CardInputVirementComponent, CardInputDateLivraisonComponent, CardInputPackagingPretComponent, SwipperCardEtapeComponent, CardInputConfigurationComponent, CardInputDisponibiliteComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class CommandePageModule {}

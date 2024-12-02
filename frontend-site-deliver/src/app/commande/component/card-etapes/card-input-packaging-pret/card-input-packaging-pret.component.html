@@ -3,9 +3,9 @@
     <ion-card-title>Packaging/configuration prête </ion-card-title>
   </ion-card-header>
   <ion-card-content>
-    <ion-radio-group value="oui">
-      <ion-radio class="ion-margin-vertical" value="oui">Oui</ion-radio><br />
-      <ion-radio value="non">Non</ion-radio><br />
+    <ion-radio-group [(ngModel)]="commande.readyForPackaging">
+      <ion-radio class="ion-margin-vertical" value="true">Oui</ion-radio><br />
+      <ion-radio value="false">Non</ion-radio><br />
     </ion-radio-group>
   </ion-card-content>
   <ion-button fill="solid" class="ion-padding">Envoyer</ion-button>

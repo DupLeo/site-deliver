@@ -11,7 +11,8 @@ export class ModalGererCommandeComponent  implements OnInit {
 
   constructor() { }
   selectedSegment: string = 'first';
-  @Input() commande!: { name: string, status: string };
+  @Input() commande!: { name: string; status: string; etapesHistorique: { [key: string]: { donnees: any } } };
+
 
 
   ngOnInit() {}

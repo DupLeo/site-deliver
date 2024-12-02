@@ -21,6 +21,10 @@ const routes: Routes = [
     path: 'commande',
     loadChildren: () => import('./commande/commande.module').then( m => m.CommandePageModule)
   },
+  {
+    path: 'profil',
+    loadChildren: () => import('./profil/profil.module').then( m => m.ProfilPageModule)
+  },
 ];
 
 @NgModule({

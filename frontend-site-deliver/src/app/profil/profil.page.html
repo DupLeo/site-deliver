@@ -1,0 +1,35 @@
+<ion-content [fullscreen]="true">
+  <ion-card>
+    <ion-card-header>
+      <ion-title>Mon Profil</ion-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-list>
+        <ion-item>
+          <ion-label position="stacked">Nom</ion-label>
+          <ion-text>{{ user.name }}</ion-text>  <!-- Afficher le nom de l'utilisateur -->
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Prénom</ion-label>
+          <ion-text>{{ user.firstName }}</ion-text>  <!-- Afficher le prénom -->
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Métier</ion-label>
+          <ion-text>{{ user.profession }}</ion-text>  <!-- Afficher le métier -->
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Magasin</ion-label>
+          <ion-text>{{ user.store }}</ion-text>  <!-- Afficher le magasin -->
+        </ion-item>
+      </ion-list>
+      <ion-button  fill="outline" color="danger" (click)="logout()">
+        <ion-label>Se Déconnecter</ion-label>
+      </ion-button>
+
+    </ion-card-content>
+  </ion-card>
+</ion-content>

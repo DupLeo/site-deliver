@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import { register} from "swiper/element/bundle";
 import { ServiceGestionAccesCommandeService} from "../../service/service-gestion-acces-commande.service";
+import { Commande } from '../../../data/commandes.model'
 
 register()
 @Component({
@@ -10,7 +11,7 @@ register()
 })
 export class ModalGererCommandeComponent  implements OnInit {
 
-  @Input() commande!: { name: string; status: string; etapesHistorique: { [key: string]: { donnees: any } } }
+  @Input() commande!: Commande
 
   actionPossibleRole = false
   selectedSegment: string = 'first';

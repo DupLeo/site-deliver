@@ -1,4 +1,6 @@
 import {Component, Input} from '@angular/core';
+import {Commande} from '../../../data/commandes.model'
+
 
 @Component({
   selector: 'app-row-commande',
@@ -7,6 +9,6 @@ import {Component, Input} from '@angular/core';
 })
 
 export class RowCommandeComponent {
-  @Input() commandes: { name: string; status: string; etapesHistorique: { [key: string]: { donnees: any } } }[] = [];
+  @Input() commandes?: Commande[];
 }
 

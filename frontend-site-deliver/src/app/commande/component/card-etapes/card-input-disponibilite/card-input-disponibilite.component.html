@@ -6,13 +6,13 @@
     <ion-list>
       <ion-radio-group [disabled]="disabled" [(ngModel)]="commande.availability">
         <ion-item>
-          <ion-radio value="pas disponible"><ion-card-subtitle>Pas disponible</ion-card-subtitle></ion-radio>
+          <ion-radio [disabled]="disabled" value="pas disponible"><ion-card-subtitle>Pas disponible</ion-card-subtitle></ion-radio>
         </ion-item>
         <ion-item>
-          <ion-radio value="disponible immediatement"><ion-card-subtitle>Disponible immédiatement</ion-card-subtitle></ion-radio>
+          <ion-radio [disabled]="disabled" value="disponible immediatement"><ion-card-subtitle>Disponible immédiatement</ion-card-subtitle></ion-radio>
         </ion-item>
         <ion-item>
-          <ion-radio value="disponible ulterieurement"><ion-card-subtitle>Disponible ultérieurement</ion-card-subtitle></ion-radio>
+          <ion-radio [disabled]="disabled" value="disponible ulterieurement"><ion-card-subtitle>Disponible ultérieurement</ion-card-subtitle></ion-radio>
         </ion-item>
       </ion-radio-group>
     </ion-list>

@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {UserService} from "../../services/api/user.service";
 
 @Component({
   selector: 'app-header-search',
@@ -8,11 +9,13 @@ import {Component, Input, OnInit} from '@angular/core';
 export class HeaderSearchComponent  implements OnInit {
 
   @Input() title: string = 'Toolbar'; // valeur par défaut
+  nameSite: string | undefined = ''
 
-  constructor() {}
+  constructor(private userService:UserService) {}
 
 
-
-  ngOnInit() {}
+  ngOnInit() {
+    this.nameSite = this.userService.getUserInfo()?.ville
+  }
 
 }

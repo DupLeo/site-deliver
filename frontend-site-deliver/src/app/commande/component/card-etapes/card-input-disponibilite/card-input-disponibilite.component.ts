@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {Commande, Disponibilite} from "../../../../data/commandes.model";
 
 @Component({
   selector: 'app-card-input-disponibilite',
@@ -10,9 +11,7 @@ export class CardInputDisponibiliteComponent  implements OnInit {
   constructor() { }
 
   ngOnInit() {}
-  @Input() commande!: { availability: string,  selectedDate: string }
+  @Input() commande!: Disponibilite
   @Input() disabled!: boolean;
-
-
 
 }

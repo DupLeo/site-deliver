@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {Virement} from "../../../../data/commandes.model";
 
 @Component({
   selector: 'app-card-input-virement',
@@ -7,7 +8,7 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class CardInputVirementComponent  implements OnInit {
   showInputs = true;
-  @Input() commande!: { status: boolean, commentaire: string} ;
+  @Input() commande!: Virement;
   @Input() disabled!: boolean;
 
   constructor() { }

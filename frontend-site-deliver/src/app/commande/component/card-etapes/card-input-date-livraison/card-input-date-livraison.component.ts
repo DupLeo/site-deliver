@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {DateLivraison} from "../../../../data/commandes.model";
 
 @Component({
   selector: 'app-card-input-date-livraison',
@@ -6,7 +7,7 @@ import {Component, Input, OnInit} from '@angular/core';
   styleUrls: ['./card-input-date-livraison.component.scss'],
 })
 export class CardInputDateLivraisonComponent  implements OnInit {
-  @Input() commande!: { estimatedDate: Date };
+  @Input() commande!: DateLivraison
   @Input() disabled!: boolean;
 
   constructor() { }

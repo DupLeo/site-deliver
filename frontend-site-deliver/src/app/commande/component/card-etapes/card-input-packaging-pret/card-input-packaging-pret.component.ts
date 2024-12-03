@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {Packaging} from "../../../../data/commandes.model";
 
 @Component({
   selector: 'app-card-input-packaging-pret',
@@ -6,7 +7,7 @@ import {Component, Input, OnInit} from '@angular/core';
   styleUrls: ['./card-input-packaging-pret.component.scss'],
 })
 export class CardInputPackagingPretComponent  implements OnInit {
-  @Input() commande!: {readyForPackaging: string};
+  @Input() commande!: Packaging
   @Input() disabled!: boolean;
 
   constructor() { }

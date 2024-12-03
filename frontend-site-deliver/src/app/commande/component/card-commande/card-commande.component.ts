@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {Commande} from '../../../data/commandes.model'
 
 @Component({
   selector: 'app-card-commande',
@@ -6,7 +7,7 @@ import {Component, Input, OnInit} from '@angular/core';
   styleUrls: ['./card-commande.component.scss'],
 })
 export class CardCommandeComponent  implements OnInit {
-  @Input() commande!: { name: string; status: string; etapesHistorique: { [key: string]: { donnees: any } } };
+  @Input() commande!: Commande;
 
 
   constructor() { }

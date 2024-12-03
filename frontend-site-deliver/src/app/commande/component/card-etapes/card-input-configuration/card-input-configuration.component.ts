@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {Configuration} from "../../../../data/commandes.model";
 
 @Component({
   selector: 'app-card-input-configuration',
@@ -9,7 +10,7 @@ export class CardInputConfigurationComponent  implements OnInit {
 
   constructor() { }
 
-  @Input() commande! : { documentation: boolean, preparationFee: { enabled: boolean, type: string, amount: number, comment: string } }
+  @Input() commande! : Configuration
   @Input() disabled!: boolean;
 
 

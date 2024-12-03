@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import { ServiceGestionAccesCommandeService} from "../../service/service-gestion-acces-commande.service";
+import {Commande} from "../../../data/commandes.model";
 
 
 @Component({
@@ -8,8 +9,7 @@ import { ServiceGestionAccesCommandeService} from "../../service/service-gestion
   styleUrls: ['./swipper-card-etape.component.scss'],
 })
 export class SwipperCardEtapeComponent  implements OnInit {
-  @Input() commande!: { name: string; status: string; etapesHistorique: { [key: string]: { donnees: any } } };
-
+  @Input() commande!: Commande
   indiceEtape = {
     disponibilite: 1,
     configuration: 2,

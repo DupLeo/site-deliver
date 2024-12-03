@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {ControleLivraison} from "../../../../data/commandes.model";
 
 @Component({
   selector: 'app-card-input-controle-livraison',
@@ -7,15 +8,15 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class CardInputControleLivraisonComponent implements OnInit {
 
-  @Input() commande!:  { passage: Boolean, date: Date, configuration: Boolean } ;
+  @Input() commande!: ControleLivraison
 
-  selectedDate!: Date | undefined;  // Indique que cette propriété sera assignée plus tard
+  selectedDate: string | undefined;
   @Input() disabled!: boolean;
 
   constructor() { }
 
   ngOnInit() {
-    this.selectedDate = this.commande?.date
+    this.selectedDate = this.commande.date
   }
 }
 

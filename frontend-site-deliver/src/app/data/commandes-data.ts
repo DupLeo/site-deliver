@@ -1,20 +1,24 @@
-export const commandes = [
+import { Commande } from './commandes.model'
+
+export const commandes: Commande[] = [
   {
     name: 'Chaise en bois',
     status: 'disponibilite',
+    site: "chambery",
     etapesHistorique: {
       disponibilite: { donnees: { availability: 'non spécifié', selectedDate: '' } },
       configuration: { donnees: { documentation: false, preparationFee: { enabled: false, type: '', amount: 0, comment: '' } } },
       controleLivraison: { donnees: { passage: false, date: '', configuration: false } },
       financement: { donnees: { status: '' } },
       dateLivraison: { donnees: { estimatedDate: '' } },
-      virement: { donnees: { status: ''} },
+      virement: { donnees: { status: false } },
       packaging: { donnees: { readyForPackaging: false } },
     },
   },
   {
     name: 'Table basse',
     status: 'configuration',
+    site: "chambery",
     etapesHistorique: {
       disponibilite: { donnees: { availability: 'disponible ulterieurement', selectedDate: '2024-12-13' } },
       configuration: { donnees: { documentation: false, preparationFee: { enabled: false, type: '', amount: 0, comment: '' } } },
@@ -28,6 +32,7 @@ export const commandes = [
   {
     name: 'Bureau en verre',
     status: 'controleLivraison',
+    site: "alberville",
     etapesHistorique: {
       disponibilite: { donnees: { availability: 'disponible immediatement' } },
       configuration: { donnees: { documentation: false, preparationFee: { enabled: false, type: '', amount: 0, comment: '' } } },
@@ -41,6 +46,7 @@ export const commandes = [
   {
     name: 'Lampe de salon',
     status: 'financement',
+    site: "alberville",
     etapesHistorique: {
       disponibilite: { donnees: { availability: 'disponible immediatement' } },
       configuration: { donnees: { documentation: false, preparationFee: { enabled: true, type: 'emballe', amount: 120, comment: 'Assemblage à faire par le client' } } },
@@ -54,6 +60,7 @@ export const commandes = [
   {
     name: 'Canapé cuir',
     status: 'dateLivraison',
+    site: "chambery",
     etapesHistorique: {
       disponibilite: { donnees: { availability: 'disponible ulterieurement', selectedDate: '15/12/2024' } },
       configuration: { donnees: { documentation: false, preparationFee: { enabled: false, type: '', amount: 0, comment: '' } } },
@@ -67,6 +74,7 @@ export const commandes = [
   {
     name: 'Meuble TV',
     status: 'virement',
+    site: "annecy",
     etapesHistorique: {
       disponibilite: { donnees: { availability: 'disponible immediatement' } },
       configuration: { donnees: { documentation: false, preparationFee: { enabled: false, type: '', amount: 0, comment: '' } } },
@@ -80,6 +88,7 @@ export const commandes = [
   {
     name: 'Armoire en bois',
     status: 'packaging',
+    site: "annecy",
     etapesHistorique: {
       disponibilite: { donnees: { availability: 'disponible immediatement' } },
       configuration: { donnees: { documentation: false, preparationFee: { enabled: true, type: 'vrac', amount: 100, comment: 'SAlut' } } },

@@ -19,7 +19,11 @@ const Commande = sequelize.define('Commande', {
         allowNull: false,
     },
 }, {
-    tableName: 'commandes',  // Nom de la table
+    // options
+    tableName: 'commandes', // Nom de la table dans la DB
 });
+
+// Synchroniser le modèle avec la base de données
+Commande.sync();
 
 module.exports = Commande;

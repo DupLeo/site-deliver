@@ -57,7 +57,7 @@ export class CommanderArticlePage implements OnInit {
   }
 
   // les informations du client sont tout bon
-  // TODO : Ajouter des conditions (Format des mails, telemphone, etc...)
+  // TODO : Ajouter des conditions (Format des mails, telephone, etc...)
   infoClientOk(){
     // retourne un booléen si le formulaire du client est ok
     return this.client.nom && this.client.mail && this.client.tel &&

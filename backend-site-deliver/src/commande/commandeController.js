@@ -2,8 +2,17 @@ const Commande = require('./commandeModel'); // Assurez-vous que ce chemin est c
 
 const createCommande = async (req, res) => {
     try {
-        const { name, status, site, etapesHistorique } = req.body;
+        const { name, status, site } = req.body;
 
+        const etapesHistorique = {
+            disponibilite: { donnees: { availability: 'non spécifié', selectedDate: '' } },
+            configuration: { donnees: { documentation: false, preparationFee: { enabled: false, type: '', amount: 0, comment: '' } } },
+            controleLivraison: { donnees: { passage: false, date: '', configuration: false } },
+            financement: { donnees: { status: '' } },
+            dateLivraison: { donnees: { estimatedDate: '' } },
+            virement: { donnees: { status: false } },
+            packaging: { donnees: { readyForPackaging: false } },
+        }
         // Créer une nouvelle commande avec l'objet etapesHistorique
         const newCommande = await Commande.create({
             name,

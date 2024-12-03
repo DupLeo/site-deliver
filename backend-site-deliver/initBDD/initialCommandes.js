@@ -1,5 +1,5 @@
 // initialCommandes.js
-const Commande = require('./src/commande/commandeModel'); // Importation du modèle Commande
+const Commande = require('../src/commande/commandeModel'); // Importation du modèle Commande
 
 const initialCommandes = [
     {

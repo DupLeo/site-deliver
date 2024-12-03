@@ -4,6 +4,17 @@ const createCommande = async (req, res) => {
     try {
         const { name, status, site } = req.body;
 
+        const etapesHistorique = {
+            disponibilite: { donnees: { availability: 'non spécifié', selectedDate: '' } },
+            configuration: { donnees: { documentation: false, preparationFee: { enabled: false, type: '', amount: 0, comment: '' } } },
+            controleLivraison: { donnees: { passage: false, date: '', configuration: false } },
+            financement: { donnees: { status: '' } },
+            dateLivraison: { donnees: { estimatedDate: '' } },
+            virement: { donnees: { status: false } },
+            packaging: { donnees: { readyForPackaging: false } },
+        }
+
+
         const newCommande = await Commande.create({
             name,
             status,

@@ -94,6 +94,7 @@ export class CommanderArticlePage implements OnInit {
 
   completeCommande(){
     let COM : Commande = {
+      id: "1",
       name: this.client.nom + " - "+this.Article.nom,
       status: "disponibilite",
       site: this.place2,

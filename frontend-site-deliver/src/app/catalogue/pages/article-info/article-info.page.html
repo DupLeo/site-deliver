@@ -1,10 +1,10 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>article-info</ion-title>
-  </ion-toolbar>
   <ion-item [button]="true" (click)="back()">
     <ion-icon name="arrow-back-outline"></ion-icon>Back
   </ion-item>
+  <ion-toolbar>
+    <ion-title>Détail de l'article</ion-title>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content *ngIf="isLoading; else content">
@@ -13,14 +13,21 @@
 </ion-content>
 
 <ng-template #content>
-  <ion-content color="light" class="ion-padding">
-    <ion-thumbnail>
-      <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
-    </ion-thumbnail>
-    <ion-title>{{ this.item.name }}</ion-title>
-    <ion-card-subtitle>Prix : {{ this.item.price}}</ion-card-subtitle>
-    <h2>Description</h2>
-    <p>{{ this.item.desc}}</p>
+  <ion-content [fullscreen]="true" class="ion-padding">
+    <ion-card>
+      <ion-card-header>
+        <ion-thumbnail>
+          <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
+        </ion-thumbnail>
+        <ion-card-title>{{ this.item.name }}</ion-card-title>
+      </ion-card-header>
+      <ion-card-subtitle>Prix : {{ this.item.price}}.0€</ion-card-subtitle>
+      <ion-card-content>
+        <h2>Description</h2>
+        <p>{{ this.item.desc}}</p>
+      </ion-card-content>
+    </ion-card>
+
 
     <app-button-validate [content]="'Commander !'" class="button-validate" [routerLink]="['/catalogue/', 'commander-article', item.id]"></app-button-validate>
   </ion-content>

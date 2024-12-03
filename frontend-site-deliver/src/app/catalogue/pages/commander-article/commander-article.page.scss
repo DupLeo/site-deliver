@@ -1,0 +1,110 @@
+/* Variables pour une meilleure gestion */
+$spacing: 16px;
+
+ion-item {
+  --inner-padding-start: 0;
+  --inner-padding-end: 0;
+  flex-direction: column; /* Positionner les enfants en colonne */
+  align-items: flex-start; /* Aligner à gauche */
+  gap: 4px; /* Espacement entre le label et le champ */
+
+  ion-label {
+    font-size: 0.9rem; /* Taille du label */
+    font-weight: 600; /* Mettre en valeur */
+    margin-bottom: 4px; /* Espacement sous le label */
+    color: #6c757d; /* Couleur du texte */
+    align-self: stretch; /* Étendre le label pour occuper toute la largeur */
+  }
+
+  ion-input,
+  ion-select {
+    width: 100%; /* Faire en sorte que les champs occupent toute la largeur */
+  }
+}
+
+ion-header {
+  --background: #f8f9fa;
+  position: relative;
+
+  ion-item {
+    background: transparent;
+    padding: 0;
+    margin: 0;
+    justify-content: center;
+    position: relative;
+    ion-icon {
+      font-size: 1.4rem;
+      color: #6c757d;
+    }
+  }
+
+  ion-toolbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 56px;
+
+    ion-title {
+      font-size: 1.2rem; /* Taille du texte */
+      font-weight: bold; /* Met en valeur le titre */
+      color: #000; /* Couleur du titre */
+    }
+  }
+}
+
+
+ion-content {
+  padding: $spacing;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing;
+
+  ion-item {
+    margin-bottom: $spacing / 2;
+    ion-icon {
+      margin-right: 8px;
+    }
+  }
+
+  ion-card {
+    margin-bottom: $spacing;
+    border-radius: 8px;
+    ion-card-header {
+      font-size: 1rem;
+      font-weight: bold;
+      padding-bottom: $spacing / 2;
+    }
+
+    ion-card-content {
+      ion-item {
+        --padding-start: $spacing / 2;
+        --padding-end: $spacing / 2;
+        ion-input,
+        ion-select {
+          width: 100%;
+        }
+      }
+
+      ion-button {
+        margin-top: $spacing;
+        width: 100%;
+      }
+    }
+  }
+
+  ion-toast {
+    text-align: center;
+    --background: rgba(0, 0, 0, 0.8);
+    --color: #ffffff;
+  }
+}
+
+ion-button {
+  display: block;
+  margin: 0 auto;
+  width: calc(100% - 2 * $spacing);
+}
+
+ion-select {
+  --placeholder-color: #8e8e93;
+}

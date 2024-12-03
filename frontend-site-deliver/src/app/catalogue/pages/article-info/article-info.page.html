@@ -7,13 +7,21 @@
   </ion-item>
 </ion-header>
 
-<ion-content color="light" class="ion-padding">
-  <ion-thumbnail>
-    <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
-  </ion-thumbnail>
-  <ion-title>{{ item.nom }}</ion-title>
-  <ion-card-subtitle>Prix : {{ item.price}}</ion-card-subtitle>
-  <h2>Description</h2>
-  <p>{{ item.desc}}</p>
-  <app-button-validate [content]="'Commander !'" class="button-validate" [routerLink]="['/catalogue/', 'commander-article', item.id]"></app-button-validate>
+<ion-content *ngIf="isLoading; else content">
+  <!-- Affichage du spinner pendant le chargement -->
+  <ion-spinner name="crescent"></ion-spinner>
 </ion-content>
+
+<ng-template #content>
+  <ion-content color="light" class="ion-padding">
+    <ion-thumbnail>
+      <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
+    </ion-thumbnail>
+    <ion-title>{{ this.item.name }}</ion-title>
+    <ion-card-subtitle>Prix : {{ this.item.price}}</ion-card-subtitle>
+    <h2>Description</h2>
+    <p>{{ this.item.desc}}</p>
+
+    <app-button-validate [content]="'Commander !'" class="button-validate" [routerLink]="['/catalogue/', 'commander-article', item.id]"></app-button-validate>
+  </ion-content>
+</ng-template>

@@ -2,7 +2,7 @@ const Commande = require('./commandeModel'); // Assurez-vous que ce chemin est c
 
 const createCommande = async (req, res) => {
     try {
-        const { name, status, site, etapesHistorique } = req.body;
+        const { name, status, site } = req.body;
 
         const newCommande = await Commande.create({
             name,

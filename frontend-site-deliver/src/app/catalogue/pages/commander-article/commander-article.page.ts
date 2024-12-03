@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
-import {CommandePage} from "../../../commande/commande.page";
+import {Commande, EtapeHistorique} from '../../../data/commandes.model';
+import {CommandeService} from "../../../services/api/commande.service";
 
 @Component({
   selector: 'app-commander-article',
@@ -22,7 +23,7 @@ export class CommanderArticlePage implements OnInit {
 
 
 
-  constructor(private route : ActivatedRoute, private router: Router) {}
+  constructor(private route : ActivatedRoute, private router: Router, private commandeService: CommandeService ) {}
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
@@ -56,7 +57,7 @@ export class CommanderArticlePage implements OnInit {
   }
 
   // les informations du client sont tout bon
-  // TODO : Ajouter des conditions (Format des mails, telemphone, etc...)
+  // TODO : Ajouter des conditions (Format des mails, telephone, etc...)
   infoClientOk(){
     // retourne un booléen si le formulaire du client est ok
     return this.client.nom && this.client.mail && this.client.tel &&
@@ -89,6 +90,71 @@ export class CommanderArticlePage implements OnInit {
 
   setOpenToast(isok : boolean){
     this.isToastOpen = isok;
+  }
+
+  completeCommande(){
+    let COM : Commande = {
+      name: this.client.nom + " - "+this.Article.nom,
+      status: "disponibilite",
+      site: this.place2,
+      etapesHistorique: {
+        disponibilite: {
+          donnees: {
+            availability: "non spécifié",
+            selectedDate: '',
+          },
+        },
+        configuration: {
+          donnees: {
+            documentation: false, // Pas de documentation par défaut
+            preparationFee: {
+              enabled: false,
+              type: "",
+              amount: this.Article.price,
+              comment: this.Commande.commentaire,
+            },
+          },
+        },
+        controleLivraison: {
+          donnees: {
+            passage: false,
+            date: '',
+            configuration: false,
+          },
+        },
+        financement: {
+          donnees: {
+            status: "non-défini",
+            amount: 0,
+            paymentMethod: "",
+          },
+        },
+        dateLivraison: {
+          donnees: {
+            estimatedDate: '',
+          },
+        },
+        virement: {
+          donnees: {
+            status: false,
+            commentaire: '',
+          },
+        },
+        packaging: {
+          donnees: {
+            readyForPackaging: false,
+          },
+        },
+      },
+    };
+    this.commandeService.create(COM).subscribe({
+      next: (response) => {
+        console.log('Commande créée avec succès :', response);
+      },
+      error: (err) => {
+        console.error('Erreur lors de la création de la commande :', err);
+      }
+    });
   }
 
 }

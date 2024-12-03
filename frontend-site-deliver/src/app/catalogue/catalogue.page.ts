@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
+import {CatalogueService} from "../services/api/catalogue.service";
 
 @Component({
   selector: 'app-catalogue',
@@ -8,12 +9,17 @@ import {Router} from "@angular/router";
 })
 export class CataloguePage implements OnInit {
   // liste des items
-  items = [{id: 1, nom:"Table de bureau",price:"20", desc:"petite table de bureau."},
-    {id: 2, nom:"Lampe de chevet",price:"16", desc:"Lampe jaune trop cool."},
-    {id: 3, nom:"Chaise Gamer",price:"120", desc:"Chaise de bureau [Gamer] bonne qualité."}]
+  items: any;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private serviceCatalogue: CatalogueService) { }
 
   ngOnInit() {
+    this.recupItems()
+  }
+
+  recupItems() {
+    this.serviceCatalogue.getAll().subscribe((response: any) => {
+      this.items = response.data;
+    })
   }
 }

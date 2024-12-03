@@ -13,64 +13,100 @@
 
   <div *ngIf=" this.etape == 1">
     <!-- Formulaire pour ajouter un client -->
-    <h2>Informations clients</h2>
-    <ion-item>
-      <ion-input label="Nom client" placeholder="Nom prénom" [(ngModel)]="client.nom"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-input
-        type="email"
-        label="Email"
-        errorText="Invalide Mail"
-        placeholder="client@domaine.com"
-        ngModel
-        email
-        [(ngModel)]="client.mail"
-      ></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-input label="Numéro de Télephone" type="tel" placeholder="888-888-8888" [(ngModel)]="client.tel"></ion-input>
-    </ion-item>
-    <ion-button (click)="isInfoClientOk()">Valider</ion-button>
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Informations clients</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item>
+          <ion-input label="Nom client" placeholder="Nom prénom" [(ngModel)]="client.nom"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input
+            type="email"
+            label="Email"
+            errorText="Invalide Mail"
+            placeholder="client@domaine.com"
+            ngModel
+            email
+            [(ngModel)]="client.mail"
+          ></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input label="Numéro de Télephone" type="tel" placeholder="888-888-8888" [(ngModel)]="client.tel"></ion-input>
+        </ion-item>
+        <ion-button (click)="isInfoClientOk()">Valider</ion-button>
+      </ion-card-content>
+    </ion-card>
   </div>
 
   <div *ngIf="this.etape == 2">
     <!-- Ajouter une adresse de livraison et une destination-->
-    <h2>Adresse de livraison</h2>
-    <ion-card>MAP</ion-card>
-    <ion-item>
-      <ion-label>Site de présence physique</ion-label>
-      <ion-select [(ngModel)]="place1" fill="outline" interface="action-sheet" placeholder="Selectionner">
-        <ion-select-option *ngFor="let s of this.Sites" value="{{s}}">{{ s }}</ion-select-option>
-      </ion-select>
-    </ion-item>
-    <ion-item>
-      <ion-label>Site de livraison</ion-label>
-      <ion-select [(ngModel)]="place2" fill="outline" interface="action-sheet" placeholder="Selectionner">
-        <ion-select-option *ngFor="let s of this.Sites" value="{{s}}">{{ s }}</ion-select-option>
-      </ion-select>
-    </ion-item>
-    <ion-item>
-      <ion-label>Ajouter un commentaire</ion-label>
-      <ion-input [(ngModel)]="this.comm" placeholder="Ajoutez un commentaire pour donner des précisions sur la livraison"></ion-input>
-    </ion-item>
-    <ion-button (click)="isInfoLivraisonOk()">Enregistrer</ion-button>
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Adresse de livraison</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item>
+          <ion-label>Site de présence physique</ion-label>
+          <ion-select [(ngModel)]="place1" fill="outline" interface="action-sheet" placeholder="Selectionner">
+            <ion-select-option *ngFor="let s of this.Sites" value="{{s}}">{{ s }}</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label>Site de livraison</ion-label>
+          <ion-select [(ngModel)]="place2" fill="outline" interface="action-sheet" placeholder="Selectionner">
+            <ion-select-option *ngFor="let s of this.Sites" value="{{s}}">{{ s }}</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label>Ajouter un commentaire</ion-label>
+          <ion-input [(ngModel)]="this.comm" placeholder="Ajoutez un commentaire pour donner des précisions sur la livraison"></ion-input>
+        </ion-item>
+        <ion-button (click)="isInfoLivraisonOk()">Enregistrer</ion-button>
+      </ion-card-content>
+    </ion-card>
   </div>
 
   <div *ngIf="this.etape == 3">
     <!-- Infos de la commande avec confirmation -->
-    <h2>MAP</h2>
-    <app-article [article]="this.Article"></app-article>
-    <h2>Article...</h2>
-    <ion-item>
-      <h3>{{this.Commande.sitePresence}} to : {{this.Commande.siteLivraison}}</h3>
-    </ion-item>
     <ion-card>
-      <ion-card-title>Infos client:</ion-card-title>
-      <ion-card-subtitle>{{this.client.nom}}</ion-card-subtitle>
-      <ion-card-subtitle>Mail : {{this.client.mail}}</ion-card-subtitle>
-      <ion-card-subtitle>Tel : {{ this.client.tel }}</ion-card-subtitle>
+      <ion-card-header>
+        <ion-card-title>Récapitulatif de commande</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>Article commandé</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <app-article [article]="this.Article"></app-article>
+          </ion-card-content>
+        </ion-card>
+
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>Adresses de livraison</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            {{this.Commande.sitePresence}} to : {{this.Commande.siteLivraison}}
+          </ion-card-content>
+        </ion-card>
+
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>Infos client:</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <div>{{this.client.nom}}</div>
+            <div>Mail : {{this.client.mail}}</div>
+            <div>Tel : {{ this.client.tel }}</div>
+          </ion-card-content>
+        </ion-card>
+      </ion-card-content>
     </ion-card>
+    <ion-button (click)="completeCommande()" [routerLink]="['/']">Confirmer la commande</ion-button>
   </div>
 
 

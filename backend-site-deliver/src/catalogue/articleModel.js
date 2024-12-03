@@ -1,28 +1,26 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../../config/db.config'); // Assurez-vous que ce chemin est correct
 
-const Commande = sequelize.define('Commande', {
+const Catalogue = sequelize.define('Catalogue', {
+    id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        primaryKey: true
+    },
     name: {
         type: DataTypes.STRING,
         allowNull: false,
     },
-    status: {
+    price: {
         type: DataTypes.STRING,
         allowNull: false,
     },
-    site: {
+    desc: {
         type: DataTypes.STRING,
         allowNull: false,
-    },
-    etapesHistorique: {
-        type: DataTypes.JSON,
-        allowNull: false,
-    },
+    }
 }, {
-    tableName: 'commandes',
+    tableName: 'catalogue',
 });
 
-// Synchroniser le modèle avec la base de données
-Commande.sync();
-
-module.exports = Commande;
+module.exports = Catalogue;

@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Commande} from '../../../data/commandes.model'
 
 @Component({
@@ -9,7 +9,6 @@ import {Commande} from '../../../data/commandes.model'
 export class CardCommandeComponent  implements OnInit {
   @Input() commande!: Commande;
   fermer: boolean = false; // Valeur par défaut
-
 
   constructor() { }
 

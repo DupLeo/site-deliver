@@ -1,18 +1,20 @@
 <ion-header [translucent]="true">
   <app-header-search [title]="'Commande'"></app-header-search>
 </ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-segment [(ngModel)]="selectedSegment" (ionChange)="changeTypeCommande()">
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-segment [(ngModel)]="selectedSegment" (ionChange)="refreshCommandes()">
     <ion-segment-button value="gerer">
       <ion-item class="custom-item">
-        <ion-label><p>Gérer les commandes</p></ion-label>
+        <ion-label style="font-size: smaller;">Gérer les commandes</ion-label>
         <ion-badge color="primary">{{ nbCommandeGerer }}</ion-badge>
       </ion-item>
     </ion-segment-button>
     <ion-segment-button value="suivi">
       <ion-item class="custom-item">
-        <ion-label><p>Suivi des commandes</p></ion-label>
+        <ion-label style="font-size: smaller;">Suivi des commandes</ion-label>
         <ion-badge color="primary">{{ nbCommandeSuivi }}</ion-badge>
       </ion-item>
     </ion-segment-button>
@@ -28,8 +30,9 @@
   </ng-container>
 
   <ng-container *ngIf="selectedSegment === 'suivi'">
-    <app-row-commande [commandes]="commandesSuivi" ></app-row-commande>
+    <app-row-commande  [commandes]="commandesSuivi" ></app-row-commande>
 
   </ng-container>
+
 </ion-content>
 

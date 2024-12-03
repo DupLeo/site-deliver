@@ -1,11 +1,6 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
-
-import { Commande } from '../data/commandes.model'
-import  {ServiceGestionAccesCommandeService} from "./service/service-gestion-acces-commande.service";
-import {CommandeService} from "../services/api/commande.service";
-import {Observable} from "rxjs";
-
-
+import {ServiceGestionAccesCommandeService} from "./service/service-gestion-acces-commande.service";
+import {ChangeDetectorRef, Component, OnInit} from "@angular/core";
+import {Commande} from "../data/commandes.model";
 
 @Component({
   selector: 'app-commande',
@@ -13,82 +8,51 @@ import {Observable} from "rxjs";
   styleUrls: ['./commande.page.scss'],
 })
 export class CommandePage implements OnInit {
-
-  constructor(private serviceAccesCommande: ServiceGestionAccesCommandeService,
-              private serviceCommande:CommandeService ) { }
-
-
   selectedSegment: string = 'gerer';
-  selectedFilter: string = "";
-  nbCommandeGerer: number = 0;
-  nbCommandeSuivi: number = 0;
-  commandesMagasin!: Observable<Commande[]>;
 
-  commandesFiltreRole: Commande[] = [];
-  commandesFiltreEtape: Commande[] = [];
-  commandesSuivi: Commande[] = [];
+  constructor(private serviceAccesCommande: ServiceGestionAccesCommandeService) {}
 
-
-  commandesCurrent?: Commande[]
+  private refreshInterval: any;  // Variable pour stocker l'intervalle
 
 
   ngOnInit() {
-    this.fetchCommandes()
-    this.filterCommandeInit()
-    this.updateCounts();
-    this.changeTypeCommande();
+    this.refreshCommandes();
   }
 
-  fetchCommandes(): void {
-    this.commandesMagasin = this.serviceCommande.getAll()
+  get commandesFiltreEtape(): Commande[] {
+    return this.serviceAccesCommande.commandesFiltreEtape;
   }
 
-  filterCommandeInit() {
-    this.commandesFiltreRole = [];
-    this.commandesSuivi = [];
+  get commandesSuivi(): Commande[] {
+    return this.serviceAccesCommande.commandesSuivi;
+  }
 
-    this.commandesMagasin.subscribe((response: any) => {
-      const commandes = response.data;
-      commandes.forEach((commande: Commande) => {
-        if (this.serviceAccesCommande.autorisationAccesRoleEtape(commande.status)) {
-          this.commandesFiltreRole.push(commande);
-        } else {
-          this.commandesSuivi.push(commande);
-        }
-      });
-      this.commandesFiltreEtape = [...this.commandesFiltreRole];
-      console.log(this.commandesFiltreEtape);
-      this.updateCounts();
+  get nbCommandeGerer(): number {
+    return this.serviceAccesCommande.getCounts().nbCommandeGerer;
+  }
+
+  get nbCommandeSuivi(): number {
+    return this.serviceAccesCommande.getCounts().nbCommandeSuivi;
+  }
+
+  refreshCommandes(): void {
+    this.serviceAccesCommande.refreshCommandes().subscribe();
+  }
+
+  onFilterChanged(filter: string): void {
+    this.serviceAccesCommande.filterCommandes(filter);
+  }
+
+  doRefresh(event: any): void {
+    this.serviceAccesCommande.refreshCommandes().subscribe({
+      next: () => {
+        // Rafraîchissement terminé
+        event.target.complete();
+      },
+      error: () => {
+        // En cas d'erreur, on termine quand même
+        event.target.complete();
+      },
     });
   }
-
-  updateCounts() {
-    this.nbCommandeGerer = this.commandesFiltreEtape.length;
-    this.nbCommandeSuivi = this.commandesSuivi.length;
-  }
-
-  onFilterChanged(filter: string) {
-    this.selectedFilter = filter;
-    this.filterCommandes();
-  }
-
-  changeTypeCommande() {
-    this.commandesCurrent =
-      this.selectedSegment === 'gerer'
-        ? this.commandesFiltreEtape
-        : this.commandesSuivi;
-  }
-
-  filterCommandes() {
-    if (this.selectedFilter) {
-      this.commandesFiltreEtape = this.commandesFiltreRole.filter(
-        (commande:Commande) => commande.status === this.selectedFilter
-      );
-    } else {
-      this.commandesFiltreEtape = [...this.commandesFiltreRole];
-    }
-    this.updateCounts();
-  }
-
-
 }

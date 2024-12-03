@@ -9,6 +9,6 @@
                  [(ngModel)]="commande.commentaire">
       </ion-input>
     </ion-item>
+    <ion-button *ngIf="!disabled" class="ion-margin" fill="solid" (click)="validerCommande()">Valider</ion-button>
   </ion-card-content>
-  <ion-button [disabled]="disabled" class="ion-margin" fill="solid">Valider</ion-button>
 </ion-card>

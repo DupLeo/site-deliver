@@ -20,4 +20,21 @@ export class CommandeService {
   getAll(): Observable<Commande[]> {
     return this.http.get<Commande[]>(`${this.apiUrl}/all`);
   }
+
+  updateStep(id: string, stepName: string, newData: any): Observable<any> {
+    return this.http.put(`${this.apiUrl}/${id}/steps`, {
+      stepName,
+      newData,
+    }).pipe(
+      map(response => {
+        console.log('Mise à jour réussie:', response);
+        return response;
+      }),
+      catchError(error => {
+        console.error('Erreur lors de la mise à jour:', error);
+        return of(null);
+      })
+    );
+  }
+
 }

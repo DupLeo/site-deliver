@@ -19,6 +19,6 @@
 
 <ion-modal trigger="'open-modal-' + {{commande.name}}" [initialBreakpoint]="1" [breakpoints]="[0, 0.9, 1]">
   <ng-template>
-    <app-modal-gerer-commande style="height: 100%" [commande]="commande" ></app-modal-gerer-commande>
+    <app-modal-gerer-commande style="height: 100%" [fermer]="fermer" [commande]="commande" ></app-modal-gerer-commande>
   </ng-template>
 </ion-modal>

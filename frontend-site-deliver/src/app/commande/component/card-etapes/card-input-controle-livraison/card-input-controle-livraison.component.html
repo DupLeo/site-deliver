@@ -5,9 +5,9 @@
   <ion-card-content>
     <ion-toggle [disabled]="disabled" class="ion-margin" [(ngModel)]="commande.passage"> Date de passage contrôle qualité</ion-toggle>
     <ion-item *ngIf="commande.passage">
-      <ion-datetime [disabled]="disabled"  display-format="DD/MM/YYYY"  [(ngModel)]="selectedDate"></ion-datetime>
+      <ion-datetime [disabled]="disabled"  display-format="DD/MM/YYYY"  [(ngModel)]="commande.date"></ion-datetime>
     </ion-item>
     <ion-toggle [disabled]="disabled" class="ion-margin" [(ngModel)]="commande.configuration">Configuration spécifique (packaging)</ion-toggle>
+    <ion-button *ngIf="!disabled"  class="ion-margin" fill="solid" (click)="validerCommande()">Valider</ion-button>
   </ion-card-content>
-  <ion-button [disabled]="disabled" class="ion-margin" fill="solid">Valider</ion-button>
 </ion-card>

@@ -1,4 +1,5 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {ServiceGestionAccesCommandeService} from "../../../service/service-gestion-acces-commande.service";
 
 @Component({
   selector: 'app-card-input-financement',
@@ -8,10 +9,14 @@ import {Component, Input, OnInit} from '@angular/core';
 export class CardInputFinancementComponent  implements OnInit {
   @Input() commande!: { status: string }
   @Input() disabled!: boolean;
+  @Output() valider = new EventEmitter<any>();
 
+  ngOnInit() {
+  }
 
-constructor() { }
+  constructor() { }
 
-  ngOnInit() {}
-
+  validerCommande() {
+    this.valider.emit(this.commande);  // Émet les données à valider
+  }
 }

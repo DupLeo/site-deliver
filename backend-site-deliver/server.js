@@ -1,8 +1,8 @@
 const express = require('express');
 const sequelize = require('./config/db.config'); // Connexion à la DB
 const cors = require('cors');
-const commandeRoutes = require('./route/commande.routes'); // Chemin vers votre fichier de routes de commandes
-const userRoutes = require('./route/routes'); // Chemin vers votre fichier de routes de commandes
+const commandeRoutes = require('./route/commandeRoutes'); // Chemin vers votre fichier de routes de commandes
+const userRoutes = require('./route/userRoutes'); // Chemin vers votre fichier de routes de commandes
 
 const insertInitialCommandes = require('./initialCommandes'); // Importer la fonction pour insérer les commandes
 

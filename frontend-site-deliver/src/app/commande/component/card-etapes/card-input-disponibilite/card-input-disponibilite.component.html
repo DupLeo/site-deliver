@@ -19,7 +19,8 @@
     <ion-item *ngIf="commande.availability === 'disponible ulterieurement'">
       <ion-datetime [disabled]="disabled" display-format="DD/MM/YYYY" [(ngModel)]="commande.selectedDate"></ion-datetime>
     </ion-item>
-    <ion-button fill="solid" class="ion-padding">Envoyer</ion-button>
+
+    <ion-button *ngIf="!disabled" fill="solid" class="ion-margin" (click)="validerCommande()">À valider</ion-button>
   </ion-card-content>
 </ion-card>
 

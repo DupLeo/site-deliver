@@ -1,5 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {ControleLivraison} from "../../../../data/commandes.model";
+import {ServiceGestionAccesCommandeService} from "../../../service/service-gestion-acces-commande.service";
 
 @Component({
   selector: 'app-card-input-controle-livraison',
@@ -10,13 +11,17 @@ export class CardInputControleLivraisonComponent implements OnInit {
 
   @Input() commande!: ControleLivraison
 
-  selectedDate: string | undefined;
   @Input() disabled!: boolean;
+  @Input() idCommande!: string;
+  @Output() valider = new EventEmitter<any>();
+
+  ngOnInit() {
+  }
 
   constructor() { }
 
-  ngOnInit() {
-    this.selectedDate = this.commande.date
+  validerCommande() {
+    this.valider.emit(this.commande);  // Émet les données à valider
   }
 }
 

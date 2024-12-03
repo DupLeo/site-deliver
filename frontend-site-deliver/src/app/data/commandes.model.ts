@@ -1,28 +1,28 @@
 export interface Disponibilite {
-  availability: string; // Disponible immédiatement, ultérieurement, etc.
-  selectedDate?: string; // Date optionnelle
+  availability: string;
+  selectedDate?: string;
 }
 
 export interface Configuration {
   documentation: boolean;
   preparationFee: {
     enabled: boolean;
-    type: string; // Par exemple, 'emballe', 'vrac', etc.
+    type: string;
     amount: number;
     comment?: string;
   };
 }
 
 export interface ControleLivraison {
-  passage: boolean; // Si le contrôle est activé
-  date?: string; // Date du contrôle
-  configuration: boolean; // Si la configuration a été validée
+  passage: boolean;
+  date?: string;
+  configuration: boolean;
 }
 
 export interface Financement {
-  status: string; // Statut du financement
-  amount?: number; // Montant optionnel
-  paymentMethod?: string; // Méthode de paiement
+  status: string;
+  amount?: number;
+  paymentMethod?: string;
 }
 
 export interface DateLivraison {
@@ -49,6 +49,7 @@ export interface EtapeHistorique {
 }
 
 export interface Commande {
+  id: string;
   name: string;
   status: string;
   site: string;

@@ -7,6 +7,6 @@
       <ion-radio class="ion-margin-vertical" value="true">Oui</ion-radio><br />
       <ion-radio value="false">Non</ion-radio><br />
     </ion-radio-group>
+    <ion-button *ngIf="!disabled" fill="solid" class="ion-padding" (click)="validerCommande()" >Envoyer</ion-button>
   </ion-card-content>
-  <ion-button [disabled]="disabled" fill="solid" class="ion-padding">Envoyer</ion-button>
 </ion-card>

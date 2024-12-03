@@ -19,6 +19,6 @@
         </ion-item>
       </ion-radio-group>
     </ion-list>
+    <ion-button *ngIf="!disabled" (click)="validerCommande()" class="ion-margin" fill="solid">Valider</ion-button>
   </ion-card-content>
-  <ion-button [disabled]="disabled" class="ion-margin" fill="solid">Valider</ion-button>
 </ion-card>

@@ -1,5 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Packaging} from "../../../../data/commandes.model";
+import {ServiceGestionAccesCommandeService} from "../../../service/service-gestion-acces-commande.service";
 
 @Component({
   selector: 'app-card-input-packaging-pret',
@@ -9,9 +10,15 @@ import {Packaging} from "../../../../data/commandes.model";
 export class CardInputPackagingPretComponent  implements OnInit {
   @Input() commande!: Packaging
   @Input() disabled!: boolean;
+  @Output() valider = new EventEmitter<any>();
+
+  ngOnInit() {
+  }
 
   constructor() { }
 
-  ngOnInit() {}
+  validerCommande() {
+    this.valider.emit(this.commande);  // Émet les données à valider
+  }
 
 }

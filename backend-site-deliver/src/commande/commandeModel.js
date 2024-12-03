@@ -15,11 +15,11 @@ const Commande = sequelize.define('Commande', {
         allowNull: false,
     },
     etapesHistorique: {
-        type: DataTypes.JSON, // Utilisation de JSONB pour stocker des objets JSON
+        type: DataTypes.JSON,
         allowNull: false,
     },
 }, {
-    tableName: 'commandes',  // Nom de la table
+    tableName: 'commandes',
 });
 
 module.exports = Commande;

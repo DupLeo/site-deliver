@@ -1,25 +1,23 @@
 <swiper-container class="ion-margin-bottom" pagination="true" [initialSlide]="getLastIndex()">
   <swiper-slide *ngIf="autorisationAccesEtape('disponibilite')">
-    <app-card-input-disponibilite [disabled]="modifiable('disponibilite')" [commande]="(commande.etapesHistorique['disponibilite'].donnees)"></app-card-input-disponibilite>
+    <app-card-input-disponibilite (valider)="validerCommande('disponibilite', $event)" [disabled]="modifiable('disponibilite')" [commande]="(commande.etapesHistorique['disponibilite'].donnees)"></app-card-input-disponibilite>
   </swiper-slide>
   <swiper-slide *ngIf="autorisationAccesEtape('configuration')">
-    <app-card-input-configuration [disabled]="modifiable('configuration')" [commande]="(commande.etapesHistorique['configuration'].donnees) "></app-card-input-configuration>
+    <app-card-input-configuration (valider)="validerCommande('configuration',$event)" [disabled]="modifiable('configuration')" [commande]="(commande.etapesHistorique['configuration'].donnees) "></app-card-input-configuration>
   </swiper-slide>
   <swiper-slide *ngIf="autorisationAccesEtape('controleLivraison')">
-    <app-card-input-controle-livraison [disabled]="modifiable('controleLivraison')" [commande]="(commande.etapesHistorique['controleLivraison'].donnees)"></app-card-input-controle-livraison>
+    <app-card-input-controle-livraison (valider)="validerCommande('controleLivraison',$event)" [disabled]="modifiable('controleLivraison')" [commande]="(commande.etapesHistorique['controleLivraison'].donnees)"></app-card-input-controle-livraison>
   </swiper-slide>
   <swiper-slide *ngIf="autorisationAccesEtape('financement')">
-      <app-card-input-financement [disabled]="modifiable('financement')" [commande]="(commande.etapesHistorique['financement'].donnees)"></app-card-input-financement>
+      <app-card-input-financement (valider)="validerCommande('financement',$event)" [disabled]="modifiable('financement')" [commande]="(commande.etapesHistorique['financement'].donnees)"></app-card-input-financement>
   </swiper-slide>
   <swiper-slide *ngIf="autorisationAccesEtape('virement')">
-    <app-card-input-virement [disabled]="modifiable('virement')" [commande]="(commande.etapesHistorique['virement'].donnees)"></app-card-input-virement>
+    <app-card-input-virement (valider)="validerCommande('virement',$event)" [disabled]="modifiable('virement')" [commande]="(commande.etapesHistorique['virement'].donnees)"></app-card-input-virement>
   </swiper-slide>
   <swiper-slide *ngIf="autorisationAccesEtape('dateLivraison')">
-    <app-card-input-date-livraison [disabled]="modifiable('dateLivraison')" [commande]="(commande.etapesHistorique['dateLivraison'].donnees)"></app-card-input-date-livraison>
+    <app-card-input-date-livraison (valider)="validerCommande('dateLivraison',$event)" [disabled]="modifiable('dateLivraison')" [commande]="(commande.etapesHistorique['dateLivraison'].donnees)"></app-card-input-date-livraison>
   </swiper-slide>
   <swiper-slide *ngIf="autorisationAccesEtape('packaging')">
-    <app-card-input-packaging-pret [disabled]="modifiable('packaging')" [commande]="(commande.etapesHistorique['packaging'].donnees)"></app-card-input-packaging-pret>
+    <app-card-input-packaging-pret (valider)="validerCommande('packaging',$event)" [disabled]="modifiable('packaging')" [commande]="(commande.etapesHistorique['packaging'].donnees)"></app-card-input-packaging-pret>
   </swiper-slide>
-
-
 </swiper-container>

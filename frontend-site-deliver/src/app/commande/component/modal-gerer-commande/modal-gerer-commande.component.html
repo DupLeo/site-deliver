@@ -26,7 +26,7 @@
 
 
   <div *ngIf="selectedSegment === 'first'">
-    <app-swipper-card-etape class="ion-margin-vertical" [commande]="commande"></app-swipper-card-etape>
+    <app-swipper-card-etape (closeModal)="closeModal()" class="ion-margin-vertical" [commande]="commande"></app-swipper-card-etape>
   </div>
 
   <!-- Segment pour les informations du produit -->
@@ -64,7 +64,7 @@
             </ion-label>
           </ion-item>
         </ion-list>
-          <ion-button slot="end" color="primary" fill="outline">
+          <ion-button slot="end" color="primary" fill="outline" (click)="closeModal()">
             <ion-icon name="eye-outline" slot="start"></ion-icon>
             <span>Voir fiche produit</span>
           </ion-button>

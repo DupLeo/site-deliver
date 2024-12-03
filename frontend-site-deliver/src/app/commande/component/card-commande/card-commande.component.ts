@@ -8,10 +8,12 @@ import {Commande} from '../../../data/commandes.model'
 })
 export class CardCommandeComponent  implements OnInit {
   @Input() commande!: Commande;
+  fermer: boolean = false; // Valeur par défaut
 
 
   constructor() { }
 
   ngOnInit() {}
+
 
 }

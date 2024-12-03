@@ -30,7 +30,7 @@ export class ArticleInfoPage implements OnInit {
   }
 
   back() {
-    this.router.navigateByUrl('/catalogue');
+    this.router.navigate(['/catalogue/']);
   }
 
   getItem() {

@@ -54,6 +54,7 @@ export class CommanderArticlePage implements OnInit {
     this.etape = 1;
     this.idArticle = null;
     this.Article = {};
+    this.router.navigate(['/'])
   }
 
   // les informations du client sont tout bon

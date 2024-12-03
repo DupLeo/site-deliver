@@ -1,10 +1,9 @@
 <ion-header [translucent]="true">
+  <ion-item [button]="true" (click)="reset()">
+    <ion-icon name="close-outline"></ion-icon>
+  </ion-item>
   <ion-toolbar>
-    <ion-title>commander-article</ion-title>
-    <!-- Bouton retour à l'article a été sélectionné -->
-    <ion-item [button]="true" [routerLink]="['/catalogue/', 'article-info', this.idArticle]" (click)="reset()">
-      <ion-icon name="close-outline"></ion-icon>
-    </ion-item>
+    <ion-title>Commander l'article</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -90,7 +89,7 @@
             <ion-card-title>Adresses de livraison</ion-card-title>
           </ion-card-header>
           <ion-card-content>
-            {{this.Commande.sitePresence}} to : {{this.Commande.siteLivraison}}
+            {{this.Commande.sitePresence}} -> {{this.Commande.siteLivraison}}
           </ion-card-content>
         </ion-card>
 

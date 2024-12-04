@@ -21,6 +21,7 @@ export class ServiceGestionAccesCommandeService {
   private _commandesFiltreRole: Commande[] = [];
   private _commandesFiltreEtape: Commande[] = [];
   private _commandesSuivi: Commande[] = [];
+  private _commandesFiltreSite: Commande[] = [];
   private _selectedFilter: string = '';
 
   constructor(
@@ -72,6 +73,23 @@ export class ServiceGestionAccesCommandeService {
     return false;
   }
 
+  autorisationAccesRoleEtapeSite(etape: string, site:string): boolean {
+    const userInfo = this.userService.getUserInfo();
+
+    if (userInfo && this.accesRole[userInfo.poste]) {
+      const bonRole = this.accesRole[userInfo.poste].includes(etape);
+      const bonSite = userInfo.ville === site;
+      return bonRole && bonSite;
+    }
+
+    return false;
+  }
+
+  autorisationAccesSite(site:string){
+    const userInfo = this.userService.getUserInfo();
+    return userInfo?.ville == site;
+  }
+
   fetchAndFilterCommandes(): Observable<{ filtreRole: Commande[]; suivi: Commande[] }> {
     return this.commandeService.getAll().pipe(
       map((response: any) => {
@@ -80,10 +98,12 @@ export class ServiceGestionAccesCommandeService {
         const suivi: Commande[] = [];
 
         commandes.forEach((commande) => {
-          if (this.autorisationAccesRoleEtape(commande.status)) {
+          if (this.autorisationAccesRoleEtapeSite(commande.status, commande.site)) {
             filtreRole.push(commande);
           } else {
-            suivi.push(commande);
+            if(this.autorisationAccesSite(commande.site)){
+              suivi.push(commande);
+            }
           }
         });
 

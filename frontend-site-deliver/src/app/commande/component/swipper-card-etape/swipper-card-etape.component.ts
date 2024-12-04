@@ -36,7 +36,7 @@ export class SwipperCardEtapeComponent  implements OnInit {
 
   autorisationAccesEtape(etape: keyof typeof this.indiceEtape): boolean {
     const statusIndex = this.indiceEtape[this.commande.status as keyof typeof this.indiceEtape];
-    const accesRole = this.gestionCommandeService.autorisationAccesRoleEtape(etape)
+    const accesRole = this.gestionCommandeService.autorisationAccesRoleEtapeSite(etape, this.commande.site)
     return (this.indiceEtape[etape] <= statusIndex) && accesRole;
   }
 

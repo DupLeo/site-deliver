@@ -2,7 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import { register} from "swiper/element/bundle";
 import { ServiceGestionAccesCommandeService} from "../../service/service-gestion-acces-commande.service";
 import { Commande } from '../../../data/commandes.model'
-import {ModalController} from "@ionic/angular";
+import {ModalController, ToastController} from "@ionic/angular";
 
 register()
 @Component({
@@ -18,7 +18,9 @@ export class ModalGererCommandeComponent  implements OnInit {
   selectedSegment: string = 'first';
   @Input() fermer: boolean = false;
 
-  constructor(private serviceAcces:ServiceGestionAccesCommandeService, private modalController: ModalController,
+  constructor(private serviceAcces:ServiceGestionAccesCommandeService,
+              private modalController: ModalController,
+              private toastController: ToastController
   ) { }
 
   ngOnInit() {
@@ -35,6 +37,18 @@ export class ModalGererCommandeComponent  implements OnInit {
   }
 
   closeModal() {
+    this.presentToast('Étape complétée avec succès !');
     this.modalController.dismiss();
   }
+
+  async presentToast(message: string) {
+    const toast = await this.toastController.create({
+      message: message,
+      duration: 2500,
+      position: 'top',
+      color: 'success',
+    });
+    await toast.present();
+  }
+
 }

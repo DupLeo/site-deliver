@@ -1,10 +1,10 @@
-<ion-header [translucent]="true">
-  <ion-item [button]="true" (click)="back()">
-    <ion-icon name="arrow-back-outline"></ion-icon>Back
+<ion-header class="ion-no-border " [translucent]="true">
+  <ion-item lines="none" >
+    <div slot="start">
+      <ion-icon class="ion-margin" size="large" (click)="back()" name="arrow-back-outline"></ion-icon>
+    </div>
+    <ion-title class="ion-margin" slot="end">Détail de l'article</ion-title>
   </ion-item>
-  <ion-toolbar>
-    <ion-title>Détail de l'article</ion-title>
-  </ion-toolbar>
 </ion-header>
 
 <ion-content *ngIf="isLoading; else content">
@@ -12,23 +12,29 @@
   <ion-spinner name="crescent"></ion-spinner>
 </ion-content>
 
-<ng-template #content>
+<ng-template  #content>
   <ion-content [fullscreen]="true" class="ion-padding">
     <ion-card>
       <ion-card-header>
-        <ion-thumbnail>
-          <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
-        </ion-thumbnail>
-        <ion-card-title>{{ this.item.name }}</ion-card-title>
+        <ion-card-title>
+          {{ this.item.name }}
+        </ion-card-title>
       </ion-card-header>
-      <ion-card-subtitle>Prix : {{ this.item.price}}.0€</ion-card-subtitle>
-      <ion-card-content>
-        <h2>Description</h2>
+      <ion-card-content style="display: flex; justify-items: center; align-items: center; flex-direction: column">
+        <img style="width: 200px;" alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
+        <ion-card-subtitle>
+          <ion-icon class="ion-margin-horizontal" name="cash-outline" size="small"></ion-icon> Prix : {{ this.item.price}}.0€
+        </ion-card-subtitle>
+        <ion-card-subtitle >
+          <ion-icon class="ion-margin-horizontal" name="clipboard-outline" size="small"></ion-icon>
+          Description
+        </ion-card-subtitle>
         <p>{{ this.item.desc}}</p>
+        <app-button-validate [content]="'Commander !'" class="button-validate" [routerLink]="['/catalogue/', 'commander-article', item.id]">
+          <ion-icon name="cart-outline" size="small"></ion-icon> Commander
+        </app-button-validate>
       </ion-card-content>
     </ion-card>
 
-
-    <app-button-validate [content]="'Commander !'" class="button-validate" [routerLink]="['/catalogue/', 'commander-article', item.id]"></app-button-validate>
   </ion-content>
 </ng-template>

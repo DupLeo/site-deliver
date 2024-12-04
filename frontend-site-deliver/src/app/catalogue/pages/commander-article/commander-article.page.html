@@ -1,10 +1,10 @@
-<ion-header [translucent]="true">
-  <ion-item [button]="true" (click)="reset()">
-    <ion-icon name="close-outline"></ion-icon>
+<ion-header class="ion-no-border " [translucent]="true">
+  <ion-item lines="none" >
+    <div slot="start">
+      <ion-icon class="ion-margin" size="large" (click)="back()" name="close-outline"></ion-icon>
+    </div>
+    <ion-title class="ion-margin" slot="end">Commander l'article</ion-title>
   </ion-item>
-  <ion-toolbar>
-    <ion-title>Commander l'article</ion-title>
-  </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="false">

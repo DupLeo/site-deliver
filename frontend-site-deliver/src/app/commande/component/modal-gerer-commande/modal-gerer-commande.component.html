@@ -1,4 +1,4 @@
-<ion-header>
+<ion-header class="ion-no-border">
   <ion-toolbar>
     <ion-title>{{commande.name}}</ion-title>
   </ion-toolbar>
@@ -8,7 +8,7 @@
 <ion-content>
 
 
-  <ion-segment [(ngModel)]="selectedSegment">
+  <ion-segment [scrollable]="true" [(ngModel)]="selectedSegment">
     <ion-segment-button value="first" *ngIf="actionPossibleRole">
       <ion-label class="ion-text-small">Action</ion-label>
     </ion-segment-button>

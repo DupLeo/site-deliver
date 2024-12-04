@@ -1,0 +1,12 @@
+ion-card, .card-ios, .card-md {
+  border: 0 !important;
+  box-shadow: none !important;
+  border: none !important;
+  border-style: none !important;
+  border: 1px solid lightgrey !important;
+}
+.vertical-container {
+  display: flex;
+  flex-direction: column; /* Alignement vertical */
+  align-items: flex-start; /* Alignement à gauche, vous pouvez changer selon vos besoins */
+}

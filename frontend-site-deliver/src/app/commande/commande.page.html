@@ -1,28 +1,28 @@
-<ion-header [translucent]="true">
+<ion-header class="ion-no-border">
   <app-header-search [title]="'Commande'"></app-header-search>
 </ion-header>
-<ion-content>
+<ion-content class="ion-no-border" >
   <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
-  <ion-segment [(ngModel)]="selectedSegment" (ionChange)="refreshCommandes()">
+  <ion-segment [scrollable]="true" [(ngModel)]="selectedSegment" (ionChange)="refreshCommandes()">
     <ion-segment-button value="gerer">
       <ion-item class="custom-item">
-        <ion-label style="font-size: smaller;">Gérer les commandes</ion-label>
+        <ion-label>Gérer</ion-label>
         <ion-badge color="primary">{{ nbCommandeGerer }}</ion-badge>
       </ion-item>
     </ion-segment-button>
     <ion-segment-button value="suivi">
       <ion-item class="custom-item">
-        <ion-label style="font-size: smaller;">Suivi des commandes</ion-label>
+        <ion-label>Suivi</ion-label>
         <ion-badge color="primary">{{ nbCommandeSuivi }}</ion-badge>
       </ion-item>
     </ion-segment-button>
   </ion-segment>
 
   <ng-container *ngIf="selectedSegment === 'gerer'">
-    <ion-header>
-      <ion-toolbar>
+    <ion-header  class="ion-no-border with-bottom-border">
+      <ion-toolbar  >
         <app-row-chips-filter (filterChanged)="onFilterChanged($event)"></app-row-chips-filter>
       </ion-toolbar>
     </ion-header>

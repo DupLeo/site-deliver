@@ -41,7 +41,7 @@ export class CommanderArticlePage implements OnInit {
 
   // récupère la liste des sites dispo
   getSites(){
-    this.Sites = [ "Chambéry", "Annecy", "Bourg-en-Bresse", "Toulouse","Lyon"];
+    this.Sites = [ "chambery", "annecy", "alberville"];
   }
 
   suivant(){
@@ -55,6 +55,9 @@ export class CommanderArticlePage implements OnInit {
     this.idArticle = null;
     this.Article = {};
     this.router.navigate(['/'])
+  }
+  back() {
+    this.router.navigate(['/']);
   }
 
   // les informations du client sont tout bon

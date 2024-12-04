@@ -1,23 +1,40 @@
-<ion-card class="width:100%;" [button]="true" id="'open-modal-' + {{commande.name}}">
-  <ion-card-header>
-    <ion-card-title>{{ commande.name }}</ion-card-title>
+
+<ion-card
+  [button]="true"
+  id="'open-modal-' + {{commande.name}}">
+  <ion-card-header class="ion-no-padding" >
+    <ion-item>
+      <ion-card-title slot="start">{{ commande.name }}</ion-card-title>
+      <div slot="end">
+        <ion-chip color="secondary" *ngIf="commande.status === 'configuration'" fill="clear">À configurer</ion-chip>
+        <ion-chip color="secondary" *ngIf="commande.status === 'disponibilite'" fill="clear">Disponibiliter</ion-chip>
+        <ion-chip color="secondary" *ngIf="commande.status === 'controleLivraison'" fill="clear">À controller</ion-chip>
+        <ion-chip color="secondary" *ngIf="commande.status === 'financement'" fill="clear">À financer</ion-chip>
+        <ion-chip color="secondary" *ngIf="commande.status === 'virement'" fill="clear">À controller</ion-chip>
+        <ion-chip color="secondary" *ngIf="commande.status === 'dateLivraison'" fill="clear">Date à definir</ion-chip>
+        <ion-chip color="secondary" *ngIf="commande.status === 'packaging'" fill="clear">À packager</ion-chip>
+      </div>
+    </ion-item>
   </ion-card-header>
 
   <ion-card-content>
-    <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" style="width: 100px; height: auto;"/>
+    <ion-item class="ion-no-padding" style="display: flex; align-items: center;">
+      <img class="ion-no-margin" slot="start" alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" style="width: 100px; height: auto;"/>
+      <div style="display: flex; flex-direction: column; justify-content: center; margin-left: 10px;">
+        <ion-item lines="none">
+          <ion-icon name="calendar" size="small"></ion-icon>
+          <ion-card-subtitle class="ion-padding-start">13/12/2024</ion-card-subtitle>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-icon name="information-circle" size="small"></ion-icon>
+          <ion-card-subtitle class="ion-padding-start">Meuble</ion-card-subtitle>
+        </ion-item>
+      </div>
+    </ion-item>
   </ion-card-content>
-  <ion-button *ngIf="commande.status === 'configuration'" fill="clear">À configurer</ion-button>
-  <ion-button *ngIf="commande.status === 'disponibilite'" fill="clear">À valider</ion-button>
-  <ion-button *ngIf="commande.status === 'controleLivraison'" fill="clear">À controller</ion-button>
-  <ion-button *ngIf="commande.status === 'financement'" fill="clear">À payer</ion-button>
-  <ion-button *ngIf="commande.status === 'virement'" fill="clear">À controller virement</ion-button>
-  <ion-button *ngIf="commande.status === 'dateLivraison'" fill="clear">Date à definir</ion-button>
-  <ion-button *ngIf="commande.status === 'packaging'" fill="clear">À packager</ion-button>
-
-
 </ion-card>
 
-<ion-modal trigger="'open-modal-' + {{commande.name}}" [initialBreakpoint]="1" [breakpoints]="[0, 0.9, 1]">
+<ion-modal trigger="'open-modal-' + {{commande.name}}" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
   <ng-template>
     <app-modal-gerer-commande style="height: 100%" [fermer]="fermer" [commande]="commande" ></app-modal-gerer-commande>
   </ng-template>

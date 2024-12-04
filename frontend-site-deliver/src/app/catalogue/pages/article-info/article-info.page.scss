@@ -1,84 +1,11 @@
 /* Variables */
-$spacing: 16px;
 
 ion-header {
   --background: #f8f9fa;
-  position: relative; /* Assure que les enfants soient bien positionnés */
-  padding: $spacing 0;
-
-  ion-toolbar {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-
-    ion-title {
-      font-size: 1.4rem;
-      font-weight: bold;
-      text-align: center;
-    }
-  }
+  border-bottom: 1px solid #ccc; /* Ajoute une bordure en bas */
 }
 
 ion-content {
-  &.ion-padding {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center; /* Aligne verticalement les éléments */
-    gap: $spacing;
-
-    ion-thumbnail {
-      width: 150px;
-      height: 150px;
-      border-radius: 8px;
-      overflow: hidden;
-      margin: auto;
-      padding: $spacing;
-
-      img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-    }
-
-    ion-title {
-      font-size: 1.4rem;
-      font-weight: bold;
-      text-align: center;
-    }
-
-    ion-card-subtitle {
-      font-size: 1.2rem;
-      color: #6c757d;
-      text-align: center;
-    }
-
-    h2 {
-      margin-top: $spacing;
-      font-size: 1.2rem;
-      color: #444;
-      align-self: flex-start;
-    }
-
-    p {
-      margin: 0;
-      font-size: 1rem;
-      color: #555;
-      text-align: justify;
-      align-self: stretch;
-    }
-
-    .button-validate {
-      margin-top: $spacing * 2;
-      width: 100%;
-      max-width: 300px;
-      text-align: center;
-      position: absolute;
-    }
-  }
-
   /* Spinner styling (loading state) */
   ion-spinner {
     display: block;
@@ -86,4 +13,19 @@ ion-content {
     width: 50px;
     height: 50px;
   }
+}
+
+ion-card, .card-ios, .card-md {
+  border: 0 !important;
+  box-shadow: none !important;
+  border: none !important;
+  border-style: none !important;
+  border: 1px solid lightgrey !important;
+}
+
+ion-card-title {
+  display: flex; align-self: center; justify-content: center;
+}
+ion-card-subtitle{
+  display: flex; align-self: start; margin-bottom: 1em; margin-top: 1em;
 }

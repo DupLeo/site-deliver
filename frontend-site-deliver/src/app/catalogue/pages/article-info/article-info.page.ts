@@ -12,6 +12,7 @@ export class ArticleInfoPage implements OnInit {
   item: any;
   isLoading: boolean = true;
 
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,

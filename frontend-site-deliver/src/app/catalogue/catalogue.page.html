@@ -1,13 +1,13 @@
-<ion-header translucent="true">
+<ion-header class="ion-no-border" translucent="true">
 <app-header-search [title]="'Catalogue'"></app-header-search>
 </ion-header>
 
 
 <ion-content [fullscreen]="true">
 
-  <ion-card>
-    <ion-card-content>
-      <ion-list *ngFor="let item of this.items">
+  <ion-card class="ion-no-margin">
+    <ion-card-content class="ion-no-padding ion-no-margin">
+      <ion-list class="ion-no-margin ion-no-padding" *ngFor="let item of this.items">
         <app-article [article]="item" [routerLink]="['/catalogue/', 'article-info', item.id]"></app-article>
       </ion-list>
     </ion-card-content>

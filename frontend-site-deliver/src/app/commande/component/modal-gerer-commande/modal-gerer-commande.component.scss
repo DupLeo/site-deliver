@@ -4,3 +4,13 @@ ion-label {
 ion-segment-button ion-label {
   font-size: 10px;
 }
+ion-header.ion-no-border {
+  border-bottom: 1px solid #ccc;  /* Bordure fine en bas */
+}
+ion-card, .card-ios, .card-md {
+  border: 0 !important;
+  box-shadow: none !important;
+  border: none !important;
+  border-style: none !important;
+  border: 1px solid lightgrey !important;
+}

@@ -50,18 +50,17 @@
       <ion-card-content>
         <ion-item>
           <ion-label>Site de présence physique</ion-label>
-          <ion-select [(ngModel)]="place1" fill="outline" interface="action-sheet" placeholder="Selectionner">
+          <ion-select  [(ngModel)]="place1" interface="action-sheet" placeholder="Selectionner">
             <ion-select-option *ngFor="let s of this.Sites" value="{{s}}">{{ s }}</ion-select-option>
           </ion-select>
         </ion-item>
         <ion-item>
           <ion-label>Site de livraison</ion-label>
-          <ion-select [(ngModel)]="place2" fill="outline" interface="action-sheet" placeholder="Selectionner">
+          <ion-select [(ngModel)]="place2"  interface="action-sheet" placeholder="Selectionner">
             <ion-select-option *ngFor="let s of this.Sites" value="{{s}}">{{ s }}</ion-select-option>
           </ion-select>
         </ion-item>
         <ion-item>
-          <ion-label>Ajouter un commentaire</ion-label>
           <ion-input [(ngModel)]="this.comm" placeholder="Ajoutez un commentaire pour donner des précisions sur la livraison"></ion-input>
         </ion-item>
       </ion-card-content>

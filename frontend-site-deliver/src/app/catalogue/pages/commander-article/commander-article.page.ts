@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {Commande, EtapeHistorique} from '../../../data/commandes.model';
 import {CommandeService} from "../../../services/api/commande.service";
+import {ToastController} from "@ionic/angular";
 
 @Component({
   selector: 'app-commander-article',
@@ -23,7 +24,10 @@ export class CommanderArticlePage implements OnInit {
 
 
 
-  constructor(private route : ActivatedRoute, private router: Router, private commandeService: CommandeService ) {}
+  constructor(private route : ActivatedRoute,
+              private router: Router,
+              private commandeService: CommandeService,
+              private toastController: ToastController) {}
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
@@ -155,11 +159,22 @@ export class CommanderArticlePage implements OnInit {
     this.commandeService.create(COM).subscribe({
       next: (response) => {
         console.log('Commande créée avec succès :', response);
+        this.presentToast('Commande envoyée avec succès :')
       },
       error: (err) => {
         console.error('Erreur lors de la création de la commande :', err);
       }
     });
+  }
+
+  async presentToast(message: string) {
+    const toast = await this.toastController.create({
+      message: message,
+      duration: 2500,
+      position: 'top',
+      color: 'success',
+    });
+    await toast.present();
   }
 
 }

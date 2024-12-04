@@ -105,7 +105,7 @@ export class CommanderArticlePage implements OnInit {
       id: "1",
       name: this.client.nom + " - "+this.Article.nom,
       status: "disponibilite",
-      site: this.place2,
+      site: this.place1,
       etapesHistorique: {
         disponibilite: {
           donnees: {

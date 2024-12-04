@@ -30,11 +30,13 @@
           Description
         </ion-card-subtitle>
         <p>{{ this.item.desc}}</p>
-        <app-button-validate [content]="'Commander !'" class="button-validate" [routerLink]="['/catalogue/', 'commander-article', item.id]">
-          <ion-icon name="cart-outline" size="small"></ion-icon> Commander
-        </app-button-validate>
+
       </ion-card-content>
     </ion-card>
-
   </ion-content>
+  <ion-fab slot="fixed" style="margin-bottom: 5em" vertical="bottom" horizontal="center">
+    <app-button-validate [content]="'Commander !'" class="button-validate" [routerLink]="['/catalogue/', 'commander-article', item.id]">
+      <ion-icon name="cart-outline" size="small"></ion-icon> Commander
+    </app-button-validate>
+  </ion-fab>
 </ng-template>

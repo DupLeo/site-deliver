@@ -2,17 +2,6 @@
 Lancer contener mysql :
 docker run --name mysql   -e MYSQL_ROOT_PASSWORD=1234   -e MYSQL_DATABASE=site-deliver-bdd   -p 3306:3306   -d mysql:latest
 
-==============
-Construire l'image du backend (Express) :
-Aller dans le dossier backend
-docker build -t backend-express -f Dockerfile.backend .
-
-=============
-Construire l'image du frontend (Angular) :
-Aller dans le dossier frontend
-Build projet ionic angular
-docker build -t frontend-angular -f Dockerfile.frontend .
-
 ============
 Installer la dépendance swiper. Dans /frontend-site-deliver ! :
 npm install swiper

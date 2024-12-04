@@ -17,26 +17,28 @@
         <ion-card-title>Informations clients</ion-card-title>
       </ion-card-header>
       <ion-card-content>
-        <ion-item>
+        <ion-item lines="none">
           <ion-input label="Nom client" placeholder="Nom prénom" [(ngModel)]="client.nom"></ion-input>
         </ion-item>
-        <ion-item>
+        <ion-item lines="none">
           <ion-input
+            class="no-border"
             type="email"
             label="Email"
             errorText="Invalide Mail"
             placeholder="client@domaine.com"
-            ngModel
-            email
             [(ngModel)]="client.mail"
           ></ion-input>
         </ion-item>
-        <ion-item>
+        <ion-item lines="none">
           <ion-input label="Numéro de Télephone" type="tel" placeholder="888-888-8888" [(ngModel)]="client.tel"></ion-input>
         </ion-item>
-        <ion-button (click)="isInfoClientOk()">Valider</ion-button>
+
       </ion-card-content>
     </ion-card>
+    <ion-fab style="margin-bottom: 5em" slot="fixed" vertical="bottom" horizontal="center">
+      <ion-button (click)="isInfoClientOk()">Valider</ion-button>
+    </ion-fab>
   </div>
 
   <div *ngIf="this.etape == 2">
@@ -62,9 +64,11 @@
           <ion-label>Ajouter un commentaire</ion-label>
           <ion-input [(ngModel)]="this.comm" placeholder="Ajoutez un commentaire pour donner des précisions sur la livraison"></ion-input>
         </ion-item>
-        <ion-button (click)="isInfoLivraisonOk()">Enregistrer</ion-button>
       </ion-card-content>
     </ion-card>
+      <ion-fab style="margin-bottom: 5em" slot="fixed" vertical="bottom" horizontal="center">
+        <ion-button (click)="isInfoLivraisonOk()">Enregistrer</ion-button>
+      </ion-fab>
   </div>
 
   <div *ngIf="this.etape == 3">
@@ -105,7 +109,9 @@
         </ion-card>
       </ion-card-content>
     </ion-card>
-    <ion-button (click)="completeCommande()" [routerLink]="['/']">Confirmer la commande</ion-button>
+    <ion-fab style="margin-bottom: 5em" slot="fixed" vertical="bottom" horizontal="center">
+      <ion-button (click)="completeCommande()" [routerLink]="['/']">Confirmer la commande</ion-button>
+    </ion-fab>
   </div>
 
 
